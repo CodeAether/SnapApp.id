@@ -1,0 +1,170 @@
+:root {
+	--gelap: #1b2326;
+	--abu: #3a4f52;
+	--hijau: #0ff5cb;
+	--putih: #f5fefd;
+}
+
+.section-three {
+	display: flex;
+	width: 100%;
+	height: 100vh;
+	background-color: var(--gelap);
+	padding: 8rem 7% 1rem;
+	flex-direction: column;
+}
+.section-three .label .text {
+	font-size: 1.4rem;
+	display: flex;
+	flex-direction: row;
+}
+
+.section-three .label .text span {
+	color: var(--hijau);
+}
+
+.section-three .label .judul-garis {
+	width: 200px;
+	height: 5px;
+	background-color: var(--hijau);
+	margin-top: 1.3em;
+}
+
+.section-three .content {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	padding: 2rem;
+}
+.section-three .parent {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 2rem;
+	padding: 10px;
+	width: 100%;
+	height: 100%;
+}
+
+.section-three .parent .child {
+	min-height: 100%;
+	color: var(--putih);
+	display: grid;
+	place-items: center;
+	width: 100%;
+	background-color: black;
+	border-radius: 10px;
+	box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+	transition: transform 0.3s ease-in-out;
+}
+.section-three .parent .child:hover {
+	transition: transform 0.3s ease-in-out;
+	transform: scale(1.05);
+	box-shadow: 0px 0px 10px rgb(16, 245, 204);
+}
+.section-three ul {
+	position: relative;
+	display: flex;
+}
+.section-three ul li {
+	position: relative;
+	list-style: none;
+	margin: 0 20px;
+	cursor: pointer;
+}
+.section-three ul li a {
+	text-decoration: none;
+}
+.section-three ul li a .fa-brands {
+	font-size: 6em;
+	color: #222;
+}
+.section-three ul li a::before {
+	font-family: "FontAwesome";
+	position: absolute;
+	top: 0;
+	left: 0;
+	font-size: 6em;
+	height: 0;
+	overflow: hidden;
+	transition: 0.5s ease-in-out;
+}
+
+.section-three .instagram a::before {
+	content: "\f16d";
+	background-image: linear-gradient(
+		45deg,
+		#f09433 0%,
+		#e6683c 25%,
+		#dc2743 50%,
+		#cc2366 75%,
+		#bc1888 100%
+	);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	border-bottom: 4px solid #dc2743;
+}
+.section-three .tiktok a::before {
+	content: "\e07b";
+	color: var(--putih);
+	border-bottom: 4px solid var(--putih);
+}
+.section-three .facebook a::before {
+	content: "\f39e";
+	color: #1da1f2;
+	border-bottom: 4px solid #1da1f2;
+}
+.section-three .youtube a::before {
+	content: "\f167";
+	color: red;
+	border-bottom: 4px solid red;
+}
+.section-three .child:hover a::before {
+	height: 100%;
+}
+
+.section-three .child .button a {
+	bottom: 0;
+	padding: 1rem 3rem;
+	background-color: transparent;
+	border-radius: 30px;
+	border: 2px solid #fff;
+	color: #fff;
+	padding: 10px 20px;
+	font-size: 16px;
+	outline: none;
+	transition: 0.5s ease-in-out;
+}
+
+.section-three .child .button a:hover {
+	background-color: #fff;
+	color: #000;
+}
+
+/* MQ */
+/* laptop */
+@media (max-width: 1366px) {
+}
+/* Tablet */
+@media (max-width: 768px) {
+	.section-three .parent {
+		grid-template-columns: repeat(2, 1fr);
+		padding: 4rem 1rem;
+	}
+
+	.section-three .label .judul-garis {
+		width: 150px;
+		height: 3px;
+		background-color: var(--hijau);
+		margin-top: 1.3em;
+	}
+}
+/* phone */
+@media (max-width: 450px) {
+	.section-three .label .judul-garis {
+		width: 120px;
+		height: 3px;
+		background-color: var(--hijau);
+		margin-top: 1.3em;
+	}
+}

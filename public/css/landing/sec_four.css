@@ -1,0 +1,98 @@
+:root {
+	--gelap: #1b2326;
+	--abu: #3a4f52;
+	--hijau: #0ff5cb;
+	--putih: #f5fefd;
+}
+
+.section-four {
+	display: grid;
+	place-items: center;
+	width: 100%;
+	height: 100vh;
+	background-color: var(--putih);
+	color: var(--gelap);
+	padding: 6rem 3% 2rem;
+}
+
+.section-four h2 {
+	font-size: 2rem;
+}
+
+.section-four .content {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
+.section-four .parent {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 2rem;
+	padding: 10px;
+	width: 80%;
+}
+
+.section-four .parent .child {
+	display: grid;
+	place-items: center;
+	width: 100%;
+	background-color: transparent;
+	border-radius: 40px 5px;
+}
+
+.section-four .card {
+	width: 100%;
+	height: 100%;
+	padding: 2em 1.5em;
+	background: transparent;
+	background-size: 100% 200%;
+	background-position: 0 2.5%;
+	border-radius: 40px 5px;
+	transition: 0.5s;
+	text-align: center;
+}
+
+.section-four h3 {
+	font-size: 2rem;
+	font-weight: 600;
+	color: var(--gelap);
+	margin: 1em 0;
+}
+
+.section-four p {
+	color: var(--abu);
+	font-size: 15px;
+	line-height: 1.6;
+	letter-spacing: 0.03em;
+}
+
+.section-four .icon-wrapper {
+	background-color: var(--putih);
+	position: relative;
+	margin: auto;
+	font-size: 3rem;
+	height: 2.5em;
+	width: 2.5em;
+	color: var(--hijau);
+	border-radius: 50%;
+	display: grid;
+	place-items: center;
+	box-shadow: 4px 4px 7px rgba(0, 0, 0);
+	transition: 0.5s;
+}
+
+/* MQ */
+/* laptop */
+@media (max-width: 1366px) {
+}
+/* Tablet */
+@media (max-width: 768px) {
+	.section-four .parent {
+		width: 100%;
+	}
+}
+/* phone */
+@media (max-width: 450px) {
+}
