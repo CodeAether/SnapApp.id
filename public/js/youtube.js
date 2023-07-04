@@ -1,97 +1,225 @@
-const urlInput = document.getElementById("link_url");
-const base = document.getElementById("base");
+const linkUrl = document.getElementById("link_url");
+const resultWrapper = document.getElementById("resultWrapper");
+const privateKey = CryptoJS.AES.encrypt("SnapApp", "codeaether").toString();
+var regex =
+	/^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/;
+const Toast = Swal.mixin({
+	toast: true,
+	position: "top-right",
+	iconColor: "white",
+	customClass: {
+		popup: "colored-toast",
+	},
+	showConfirmButton: false,
+	timer: 2000,
+	timerProgressBar: true,
+});
 
-async function start() {
-	const url = urlInput.value;
-	if (url.length == 0) return;
-	base.innerHTML = `
-    <img src="/img/loading.gif" style="max-width: 80px;">
-  `;
-	console.log(url);
-	axios
-		.post("/api/youtube", {
-			body: {
-				snapUri: url,
-				privateKey: "snapsnapsnap",
-			},
-		})
-		.then(function (response) {
-			console.log(response);
-		})
-		.catch(function (error) {
-			console.log(error);
+// paste funtion
+document.getElementById("pasteBtn").addEventListener("click", function () {
+	pasteBtn = document.getElementById("pasteBtn");
+	if (!linkUrl.value) {
+		navigator.clipboard.readText().then(async function (text) {
+			if (text === "") {
+				await Toast.fire({
+					icon: "warning",
+					title: "No link to paste!",
+				});
+				return;
+			}
+			linkUrl.value = text;
+			pasteBtn.innerHTML = `<i class="bi bi-x-circle"></i>`;
 		});
-}
+	} else {
+		linkUrl.value = "";
+		pasteBtn.innerHTML = `<i class="bi bi-clipboard"></i>`;
+	}
+});
 
-// result = res.data[0];
-// console.log(result);
-// let video = "";
-// let sound = "";
-// 			for (let i = 0; i < result.qualitymp4.length; i++) {
-// 				console.log("dilakukan");
-// 				video += `<tr>
-//       <td>${result.qualitymp4[i]}</td>
-//       <td>${result.sizemp4[i]}</td>
-//       <td><a href="${result.linkmp4[i]}"><button type="button" class="btn btn-success">Download</button></a>
-//       </td>
-//   </tr>`;
-// 			}
-// 			for (let i = 0; i < result.qualitymp3.length; i++) {
-// 				console.log("dilakukan");
-// 				sound += `<tr>
-//     <td>${result.qualitymp3[i]}</td>
-//     <td>${result.sizemp3[i]}</td>
-//     <td><a href="${result.linkmp3[i]}"><button type="button" class="btn btn-success">Download</button></a>
-//     </td>
-// </tr>`;
-// 			}
-// 			isi = `
-//   <div class="row gap-3" style="min-width: 900px">
-//   <div class="col">
-//     <div>
-//       <div class="card" style="width: 18rem;">
-//     <img src="${result.thumb}" class="card-img-top" alt="...">
-//     <div class="card-body">
-//       <div class="flex flex-row m-1" bis_skin_checked="1">
-//         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" width="24" stroke="currentColor">
-//         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-//         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-//         </svg>
-//         <span class="mx-2 text-sm font-semibold">${result.views} Views</span>
-//       </div>
-//       <h5 class="card-title">${result.title}</h5>
-//     </div>
-//     </div>
-//     </div>
-//   </div>
-//   <div class="col">
-//   <h5>Video</h5>
-//   <table class="table">
-//   <thead>
-//     <tr>
-//       <th scope="col">Resolution</th>
-//       <th scope="col">Size</th>
-//       <th scope="col">Download</th>
-//     </tr>
-//   </thead>
-//   <tbody>
-//     ${video}
-//   </tbody>
-// </table><br>
-// <h5>Sound</h5>
-// <table class="table">
-// <thead>
-//   <tr>
-//     <th scope="col">Resolution</th>
-//     <th scope="col">Size</th>
-//     <th scope="col">Download</th>
-//   </tr>
-// </thead>
-// <tbody>
-//   ${sound}
-// </tbody>
-// </table>
-//   </div>
-// </div>
-//   `;
-// return (document.getElementById("base").innerHTML = result);
+// download function
+document
+	.getElementById("downloadButton")
+	.addEventListener("click", async function () {
+		if (!linkUrl.value) {
+			return await Toast.fire({
+				icon: "error",
+				title: "Please, Enter the url first!",
+			});
+		}
+		if (!regex.test(linkUrl.value)) {
+			return await Toast.fire({
+				icon: "error",
+				title: "Oops, its not a URL!",
+			});
+		}
+		Toast.fire({
+			icon: "info",
+			title: "Please wait, the media is being prepared.",
+		});
+		resultWrapper.innerHTML = `
+        <div
+            id="result"
+            style="
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 50vh;
+                max-height: 100wh;
+            ">
+            <img
+                src="/img/loading.gif"
+                alt="" />
+        </div>
+        `;
+		const resAPI = await axios.post("/api/youtube", {
+			url: linkUrl.value,
+		});
+		const response = resAPI.data;
+
+		// result
+		resultVideo = [];
+		resultAudio = [];
+		// lopping add result to array
+		for (let i = 0; i < response.result.video.length; i++) {
+			data = response.result.video[i];
+			resultVideo += `
+			<tr>
+			<td>${data.resolution}</td>
+			<td>${data.size}</td>
+			<td>
+				<a
+					href="${data.url}"
+					class="btn btn-primary"
+					target="_blank"
+					download>Download</a
+				>
+			</td>
+			</tr>
+			`;
+		}
+		for (let i = 0; i < response.result.audio.length; i++) {
+			data = response.result.audio[i];
+			resultAudio += `
+			<tr>
+			<td>${data.resolution}</td>
+			<td>${data.size}</td>
+			<td>
+				<a
+					href="${data.url}"
+					class="btn btn-primary"
+					target="_blank"
+					download>Download</a
+				>
+			</td>
+			</tr>
+			`;
+		}
+		resultWrapper.innerHTML = `
+			<div id="result">
+			<div class="row">
+				<div class="details col-md-6">
+					<img
+						src="${response.thumbnail}"
+						alt="ThumbnailImage" />
+					<h5 class="mt-2">
+						${response.title}
+					</h5>
+					<div class="row mt-2">
+						<div class="col">
+							<p><b>Views: </b>${response.views}</p>
+							<p><b>Duration: </b>${response.duration}</p>
+						</div>
+						<div class="col">
+							<p><b>Like: </b>${response.likes}</p>
+							<p><b>Dislike: </b>${response.dislikes}</p>
+						</div>
+					</div>
+				</div>
+				<div class="download-tabs col-md-6">
+					<ul
+						class="nav nav-tabs"
+						id="myTab"
+						role="tablist">
+						<li
+							class="nav-item"
+							role="presentation">
+							<button
+								class="nav-link active"
+								id="home-tab"
+								data-bs-toggle="tab"
+								data-bs-target="#home-tab-pane"
+								type="button"
+								role="tab"
+								aria-controls="home-tab-pane"
+								aria-selected="true">
+								Video
+							</button>
+						</li>
+						<li
+							class="nav-item"
+							role="presentation">
+							<button
+								class="nav-link"
+								id="profile-tab"
+								data-bs-toggle="tab"
+								data-bs-target="#profile-tab-pane"
+								type="button"
+								role="tab"
+								aria-controls="profile-tab-pane"
+								aria-selected="false">
+								Audio
+							</button>
+						</li>
+					</ul>
+					<div
+						class="tab-content"
+						id="myTabContent">
+						<div
+							class="tab-pane fade show active"
+							id="home-tab-pane"
+							role="tabpanel"
+							aria-labelledby="home-tab"
+							tabindex="0">
+							<table class="table table-bordered">
+								<thead>
+									<tr>
+										<th scope="col">Resolution</th>
+										<th scope="col">Size</th>
+										<th scope="col">Download</th>
+									</tr>
+								</thead>
+								<tbody>
+									${resultVideo}
+								</tbody>
+							</table>
+						</div>
+						<div
+							class="tab-pane fade"
+							id="profile-tab-pane"
+							role="tabpanel"
+							aria-labelledby="profile-tab"
+							tabindex="0">
+							<table class="table table-bordered">
+								<thead>
+									<tr>
+										<th scope="col">Resolution</th>
+										<th scope="col">Size</th>
+										<th scope="col">Download</th>
+									</tr>
+								</thead>
+								<tbody>
+									${resultAudio}
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+			`;
+		return Toast.fire({
+			icon: "success",
+			title: "Success, your media is ready to be downloaded",
+		});
+	});

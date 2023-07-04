@@ -1,317 +1,245 @@
 :root {
-  --gelap: #1b2326;
-  --abu: #3a4f52;
-  --hijau: #0ff5cb;
-  --putih: #eff3f3;
+	--gelap: #1b2326;
+	--abu: #3a4f52;
+	--hijau: #0ff5cb;
+	--putih: #eff3f3;
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  font-family: "Poppins", sans-serif;
-  font-size: 1.2rem;
-  line-height: 1.6rem;
-  min-height: 100vh;
-}
-
-.cara-download {
-  box-shadow: black;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-
-.cara-download .judul {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  font-weight: bolder !important;
-  font-size: 20px !important;
-}
-
-.articles {
-  display: grid;
-  max-width: 800px;
-  margin-inline: auto;
-  padding-inline: 24px;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 24px;
-  min-height: 60vh;
-  /* box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
-	  rgba(0, 0, 0, 0.06) 0px 0px 0px 1px; */
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-}
-
-article {
-  --img-scale: 1.001;
-  --title-color: black !important;
-  --link-icon-translate: -20px;
-  --link-icon-opacity: 0;
-  position: relative;
-  border-radius: 16px;
-  box-shadow: none;
-  background: #fff;
-  transform-origin: center;
-  transition: all 0.4s ease-in-out;
-  overflow: hidden;
-  max-height: 35rem;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
-    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-}
-
-/* article a::after {
-	position: absolute;
-	inset-block: 0;
-	inset-inline: 0;
-	cursor: pointer;
-	content: "";
-  } */
-
-/* basic article elements styling */
-article h2 {
-  margin: 0 0 18px 0;
-  font-family: "Bebas Neue", cursive;
-  font-size: 1.9rem;
-  letter-spacing: 0.06em;
-  color: var(--title-color) !important;
-  transition: color 0.3s ease-out;
-}
-
-article p {
-  color: black !important;
-}
-
-figure {
-  margin: 0;
-  padding: 0;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-}
-
-article img {
-  max-width: 100%;
-  transform-origin: center;
-  transform: scale(var(--img-scale));
-  transition: transform 0.4s ease-in-out;
-}
-
-.article-body {
-  padding: 22px;
-}
-
-article a {
-  display: inline-flex;
-  align-items: center;
-  text-decoration: none;
-  color: #28666e;
-}
-
-article a:focus {
-  outline: 1px dotted #28666e;
-}
-
-article a .icon {
-  min-width: 24px;
-  width: 24px;
-  height: 24px;
-  margin-left: 5px;
-  transform: translateX(var(--link-icon-translate));
-  opacity: var(--link-icon-opacity);
-  transition: all 0.3s;
-}
-
-/* using the has() relational pseudo selector to update our custom properties */
-article:has(:hover, :focus) {
-  --img-scale: 1.1;
-  --title-color: #28666e;
-  --link-icon-translate: 0;
-  --link-icon-opacity: 1;
-}
-
-.penjelasan {
-  max-height: 35rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.penjelasan p {
-  color: black !important;
-}
-
-.palak-iklan {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-}
-
-.iklan {
-  width: 300px;
-  height: 200px;
-  color: white !important;
-  background-color: black !important;
-  margin-top: 0.8rem;
-  margin-bottom: 0.8rem;
-}
-@media (min-width: 1281px) {
-  h4 {
-    font-size: 1.64rem;
-  }
-  .headone {
-    font-size: 2.5rem;
-    font-weight: 600;
-  }
-  .headtwo {
-    margin-top: -1%;
-    font-size: 1.3rem;
-  }
-  .headthird {
-    font-size: 1.64rem;
-  }
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  h4 {
-    font-size: 1.64rem;
-  }
-  .headone {
-    font-size: 2.5rem;
-    font-weight: 600;
-  }
-  .headtwo {
-    margin-top: -1%;
-    font-size: 1.3rem;
-  }
-  .headthird {
-    font-size: 1.64rem;
-  }
-}
-@media (min-width: 768px) and (max-width: 1024px) {
-  h4 {
-    font-size: 1.64rem;
-  }
-  .headone {
-    font-size: 2rem;
-    font-weight: 600;
-  }
-  .headtwo {
-    margin-top: -1%;
-    font-size: 1.3rem;
-  }
-  .headthird {
-    font-size: 1.64rem;
-  }
-}
-@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-  h4 {
-    font-size: 1.64rem;
-  }
-  .headone {
-    font-size: 2rem;
-    font-weight: 600;
-  }
-  .headtwo {
-    margin-top: -1%;
-    font-size: 1.3rem;
-  }
-  .headthird {
-    font-size: 1.64rem;
-  }
-}
-@media (min-width: 481px) and (max-width: 767px) {
-  h4 {
-    font-size: 1.64rem;
-  }
-  .headone {
-    font-size: 2rem;
-    font-weight: 600;
-  }
-  .headtwo {
-    margin-top: -1%;
-    font-size: 1.1rem;
-  }
-  .headthird {
-    font-size: 1.64rem;
-  }
-}
-@media (min-width: 320px) and (max-width: 480px) {
-  h4 {
-    font-size: 1.5rem;
-  }
-  h5 {
-    font-size: 1.3rem;
-  }
-  .headone {
-    font-size: 1.8rem;
-    font-weight: 600;
-  }
-  .headtwo {
-    margin-top: -1%;
-    font-size: 1.125rem;
-  }
-  .headthird {
-    font-size: 1.3rem;
-  }
-}
+/* Navbar CSS */
 .navbar {
-  background-color: var(--gelap);
-}
-.navbar-logo {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--putih);
+	background-color: var(
+		--gelap
+	) !important; /* Menggunakan variabel warna --gelap */
 }
 
-.navbar-logo span {
-  color: var(--hijau);
+.navbar .navbar-logo {
+	margin-left: 1rem;
+	font-size: 1.5rem;
+	font-weight: 700;
+	color: var(--putih); /* Menggunakan variabel warna --putih */
 }
 
-.navbar-nav a {
-  color: var(--putih);
-  display: inline-block;
-  font-size: 1.3rem;
-  margin: 0 1.4rem;
+.navbar .navbar-logo span {
+	color: var(--hijau); /* Menggunakan variabel warna --hijau */
 }
 
-.navbar-nav a::after {
-  content: "";
-  display: block;
-  padding-bottom: 0.5rem;
-  border-bottom: 0.1rem solid var(--hijau);
-  transform: scaleX(0);
-  transition: 0.2s linear;
+/* Section One CSS */
+.section-one {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #fbc2eb;
+	background-image: linear-gradient(45deg, #fbc2eb, #a6c1ee, #fbc2eb);
+	padding: 100px 0;
+	text-align: center;
+	animation: gradientAnimation 10s linear infinite;
 }
 
-.navbar-nav a:hover::after {
-  transform: scaleX(0.8);
-  transition: 0.2s linear;
+.section-one .section-one-content {
+	margin-bottom: 30px;
 }
 
-.navbar-extra a {
-  color: var(--putih);
+.section-one .section-one-heading {
+	color: #fff;
+	font-size: 36px;
+	font-weight: bold;
+	margin-bottom: 20px;
 }
 
-#hamburger-menu {
-  display: none;
-}
-.input-field .prefix.right {
-  right: 0;
-  color: #fff;
-  font-size: 1.8rem;
+.section-one .section-one-text {
+	color: #fff;
+	font-size: 18px;
 }
 
-.page-footer,
-.footer-copyright {
-  background-color: var(--gelap) !important;
+.section-one .section-one-form {
+	background-color: transparent;
+	margin: 0 auto;
+}
+.section-one .section-one-form input {
+	border-radius: 3px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Menambahkan efek bayangan untuk memberikan kesan tumpukan */
 }
 
-.page-footer a,
-p {
-  color: aliceblue !important;
+.section-one #pasteBtn {
+	background-color: white;
+	margin-left: 5px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Menambahkan efek bayangan untuk memberikan kesan tumpukan */
+}
+
+.section-one .buttonUnduh {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.section-one .buttonUnduh .btn {
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Menambahkan efek bayangan untuk memberikan kesan tumpukan */
+}
+
+.section-one #result {
+	background-color: white;
+	border-radius: 10px;
+	margin-top: 2rem;
+	padding: 2rem;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Menambahkan efek bayangan untuk memberikan kesan tumpukan */
+}
+
+.section-one #result .details {
+	position: relative;
+	text-align: left;
+}
+
+.section-one #result .download-tabs {
+	margin: 1rem 0rem;
+}
+
+.section-one #result img {
+	max-width: 100%;
+	max-height: 100%;
+	width: auto;
+	height: auto;
+	object-fit: contain;
+}
+
+.section-one .input-group {
+	width: 100%;
+}
+
+.section-one .form-control {
+	border-radius: 0;
+}
+
+.section-one .btn-primary {
+	border-radius: 0;
+	display: block;
+	margin-top: 10px;
+}
+
+.section-one .btn-primary:hover {
+	opacity: 0.8;
+}
+
+.section-one .section-one-subheading {
+	color: #333;
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+/* Section Two CSS */
+.section-two {
+	padding: 100px 0;
+	background-color: var(--abu); /* Menggunakan variabel warna --abu */
+	color: var(--putih); /* Menggunakan variabel warna --putih */
+}
+
+.section-two .section-two-video {
+	margin-bottom: 30px;
+}
+
+.section-two .section-two-tutorial {
+	text-align: left;
+}
+
+.section-two .section-two-subheading {
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+.section-two .section-two-text {
+	font-size: 18px;
+	margin-bottom: 20px;
+}
+
+.section-two .section-two-steps li {
+	margin-bottom: 10px;
+}
+
+/* Footer CSS */
+.footer {
+	background-color: var(--gelap); /* Menggunakan variabel warna --gelap */
+	color: var(--putih); /* Menggunakan variabel warna --putih */
+	padding: 40px 0;
+}
+
+.footer .footer-heading {
+	font-size: 20px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+.footer .footer-links li {
+	margin-bottom: 10px;
+}
+
+.footer .footer-links a {
+	color: var(--putih); /* Menggunakan variabel warna --putih */
+}
+
+.footer .footer-social {
+	list-style: none;
+	padding: 0;
+	margin-top: 10px;
+}
+
+.footer .footer-social li {
+	display: inline-block;
+	margin-right: 10px;
+}
+
+.footer .footer-social a {
+	color: var(--hijau); /* Menggunakan variabel warna --hijau */
+	font-size: 18px;
+	text-decoration: none;
+}
+
+.footer .footer-social a:hover {
+	color: #007bff;
+}
+
+/* Animation Keyframes */
+@keyframes gradientAnimation {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+/* toast style */
+.colored-toast.swal2-icon-success {
+	background-color: #a5dc86 !important;
+}
+
+.colored-toast.swal2-icon-error {
+	background-color: #f27474 !important;
+}
+
+.colored-toast.swal2-icon-warning {
+	background-color: #f8bb86 !important;
+}
+
+.colored-toast.swal2-icon-info {
+	background-color: #3fc3ee !important;
+}
+
+.colored-toast.swal2-icon-question {
+	background-color: #87adbd !important;
+}
+
+.colored-toast .swal2-title {
+	color: white;
+}
+
+.colored-toast .swal2-close {
+	color: white;
+}
+
+.colored-toast .swal2-html-container {
+	color: white;
 }
