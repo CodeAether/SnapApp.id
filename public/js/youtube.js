@@ -1,7 +1,8 @@
 const linkUrl = document.getElementById("link_url");
 const resultWrapper = document.getElementById("resultWrapper");
 const privateKey = CryptoJS.AES.encrypt("SnapApp", "codeaether").toString();
-var regex =
+let linkType;
+let regex =
 	/^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/;
 const Toast = Swal.mixin({
 	toast: true,
@@ -14,6 +15,23 @@ const Toast = Swal.mixin({
 	timer: 2000,
 	timerProgressBar: true,
 });
+
+function sleksiUrl(url) {
+	url = url.replace(/^(https?:\/\/)?(www\.)?/i, "");
+	if (url.includes("youtube.com") || url.includes("youtu.be")) {
+		return "YouTube";
+	} else if (url.includes("facebook.com")) {
+		return "Facebook";
+	} else if (url.includes("tiktok.com")) {
+		return "TikTok";
+	} else if (url.includes("instagram.com")) {
+		return "Instagram";
+	} else if (url.includes("twitter.com")) {
+		return "Twitter";
+	} else {
+		return undefined;
+	}
+}
 
 // paste funtion
 document.getElementById("pasteBtn").addEventListener("click", function () {
@@ -40,6 +58,7 @@ document.getElementById("pasteBtn").addEventListener("click", function () {
 document
 	.getElementById("downloadButton")
 	.addEventListener("click", async function () {
+		// return
 		if (!linkUrl.value) {
 			return await Toast.fire({
 				icon: "error",
@@ -52,6 +71,26 @@ document
 				title: "Oops, its not a URL!",
 			});
 		}
+
+		// cek type url
+		let typeUrl = sleksiUrl(linkUrl.value);
+		if (!typeUrl) {
+			let options = ["Youtube", "Facebook", "Instagram", "Tiktok"];
+			await Swal.fire({
+				title: `Oops, we can't detect type URL you entered.
+						please select your URL type`,
+				input: "select",
+				inputOptions: options,
+				inputPlaceholder: "Select a type",
+				showCancelButton: true,
+				inputValidator: (value) => {
+					typeUrl = options[value].toLowerCase();
+				},
+			});
+		}
+
+		// lolos
+		// loading
 		Toast.fire({
 			icon: "info",
 			title: "Please wait, the media is being prepared.",
@@ -71,11 +110,24 @@ document
                 alt="" />
         </div>
         `;
-		const resAPI = await axios.post("/api/youtube", {
-			url: linkUrl.value,
-		});
+		const resAPI = await axios
+			.post(`/api/${typeUrl}`, {
+				url: linkUrl.value,
+			})
+			.catch(async function () {
+				return await Toast.fire({
+					icon: "error",
+					title: "Oops, something was wrong!",
+				});
+			});
 		const response = resAPI.data;
-
+		if (!response.status) {
+			resultWrapper.innerHTML = "";
+			return await Toast.fire({
+				icon: "error",
+				title: "Oops, something was wrong!",
+			});
+		}
 		// result
 		resultVideo = [];
 		resultAudio = [];
@@ -118,7 +170,7 @@ document
 			<div id="result">
 			<div class="row">
 				<div class="details col-md-6">
-					<img
+					<img class="img-result"
 						src="${response.thumbnail}"
 						alt="ThumbnailImage" />
 					<h5 class="mt-2">
