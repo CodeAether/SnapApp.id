@@ -34,8 +34,8 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 100%;
-	padding: 2rem;
+	height: 50%;
+	padding: 2.625rem 2rem 2rem 2rem;
 }
 .section-three .parent {
 	display: grid;
@@ -140,6 +140,43 @@
 	background-color: #fff;
 	color: #000;
 }
+
+.section-three .penjelasan {
+	padding: 0.625rem;
+}
+
+.section-three .penjelasan h4 {
+	text-align: center;
+}
+
+.section-three .penjelasan .cta-head {
+	display: flex;
+	display: flex;
+	justify-content: center; /* Mengatur konten secara horizontal di tengah */
+	align-items: center; /* Mengatur konten secara vertical di tengah */
+	width: 100%;
+	padding-top: 4.375rem;
+}
+
+.section-three .penjelasan a {
+	padding: 1rem 3rem;
+	background-color: transparent;
+	border-radius: 30px;
+	border: 2px solid #fff;
+	color: #fff;
+	padding: 10px 20px;
+	font-size: 16px;
+	outline: none;
+	transition: 0.5s ease-in-out;
+}
+
+.section-three .penjelasan a:hover {
+	background-color: #fff;
+	color: #000;
+}
+
+
+
 
 /* MQ */
 /* laptop */

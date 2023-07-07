@@ -29,7 +29,7 @@
 	justify-content: center;
 	align-items: center;
 	background-color: #fbc2eb;
-	background-image: linear-gradient(0deg, #3a4f52, #0ff5cb, #1b2326);
+	background-image: linear-gradient(0deg, #3a4f52, var(--abu), #1b2326);
 	padding: 100px 0;
 	text-align: center;
 	position: relative;
