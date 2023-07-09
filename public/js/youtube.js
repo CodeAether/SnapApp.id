@@ -1,7 +1,8 @@
 const linkUrl = document.getElementById("link_url");
 const resultWrapper = document.getElementById("resultWrapper");
 const privateKey = CryptoJS.AES.encrypt("SnapApp", "codeaether").toString();
-let linkType;
+let typeUrl;
+let process = false;
 let regex =
 	/^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/;
 const Toast = Swal.mixin({
@@ -19,15 +20,13 @@ const Toast = Swal.mixin({
 function sleksiUrl(url) {
 	url = url.replace(/^(https?:\/\/)?(www\.)?/i, "");
 	if (url.includes("youtube.com") || url.includes("youtu.be")) {
-		return "YouTube";
+		return "youtube";
 	} else if (url.includes("facebook.com")) {
-		return "Facebook";
+		return "facebook";
 	} else if (url.includes("tiktok.com")) {
-		return "TikTok";
+		return "tiktok";
 	} else if (url.includes("instagram.com")) {
-		return "Instagram";
-	} else if (url.includes("twitter.com")) {
-		return "Twitter";
+		return "instagram";
 	} else {
 		return undefined;
 	}
@@ -65,6 +64,12 @@ document
 				title: "Please, Enter the url first!",
 			});
 		}
+		if (process) {
+			return await Toast.fire({
+				icon: "error",
+				title: "Oops, you are in process!",
+			});
+		}
 		if (!regex.test(linkUrl.value)) {
 			return await Toast.fire({
 				icon: "error",
@@ -91,6 +96,7 @@ document
 
 		// lolos
 		// loading
+		process = true;
 		Toast.fire({
 			icon: "info",
 			title: "Please wait, the media is being prepared.",
@@ -111,10 +117,11 @@ document
         </div>
         `;
 		const resAPI = await axios
-			.post(`/api/${typeUrl}`, {
+			.post(`/api`, {
 				url: linkUrl.value,
+				type: typeUrl,
 			})
-			.catch(async function () {
+			.catch(async function (e) {
 				return await Toast.fire({
 					icon: "error",
 					title: "Oops, something was wrong!",
@@ -128,8 +135,8 @@ document
 				title: "Oops, something was wrong!",
 			});
 		}
-		console.log(response);
 		resultWrapper.innerHTML = response.data;
+		process = false;
 		return Toast.fire({
 			icon: "success",
 			title: "Success, your media is ready to be downloaded",

@@ -13,6 +13,7 @@
 	width: 100%;
 	min-height: 100vh;
 	padding: 8rem 7%;
+	overflow: hidden;
 }
 
 .section-one .row {
@@ -26,6 +27,7 @@
 .section-one .row .image img {
 	width: 100%;
 }
+
 
 .section-one .row .content {
 	text-align: start;
