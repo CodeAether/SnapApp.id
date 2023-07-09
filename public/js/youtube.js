@@ -101,7 +101,6 @@ document
 			icon: "info",
 			title: "Please wait, the media is being prepared.",
 		});
-		console.log(".");
 		resultWrapper.innerHTML = `
         <div
             id="result"
