@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const port = 8000;
 const bodyParser = require("body-parser");
-const fetch = require("node-fetch");
+const axios = require("axios");
 
 //connect ejs
 app.set("view engine", "ejs");
@@ -35,14 +35,16 @@ app.get("/:dlmenu", async (req, res) => {
 	}
 });
 
-app.post("/api/:dlmenu", async (req, res) => {
+app.post("/api", async (req, res) => {
 	if (!req.body.url) return res.status(400).json(["Url Missing"]);
 	try {
-		dlmenu = req.params.dlmenu;
+		type = req.body.type;
 		url = req.body.url || "";
-		const result = await fetch(`http://localhost:3000/${dlmenu}?url=${url}`);
-		const data = await result.json();
-		res.json(data);
+		const data = await axios.post(`http://localhost:3000/api`, {
+			url,
+			type,
+		});
+		res.json(data.data);
 	} catch (e) {
 		res.status(200).json([e.message]);
 	}
