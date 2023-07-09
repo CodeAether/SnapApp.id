@@ -62,7 +62,7 @@
 	.section-two .parent .content {
 		display: grid;
 		padding: 20px;
-		width: 150px;
+		width: px;
 		align-items: center;
 		height: 110px;
 		justify-content: center;
