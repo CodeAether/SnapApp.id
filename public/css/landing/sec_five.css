@@ -40,7 +40,7 @@
   width: 75%;
   min-height: 5px;
   max-width: 700px;
-  padding: 45px 70px 45px 45px;
+  padding: 25px 70px 25px 45px;
   margin: 0 auto;
   position: relative;
   font-size: 22px;
@@ -51,13 +51,14 @@
 }
 
 .section-five details + details {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .section-five details[open] {
-  min-height: 50px;
+  max-height: 90px;
   background-color: #f6f7f8;
   color: #000;
+  max-width: 300px;
   box-shadow: 2px 2px 20px rgba(16, 245, 204);
 }
 
@@ -140,7 +141,7 @@
   }
   .section-five .image #kanan {
     position: absolute;
-    top: 350%;
+    top: 370%;
     left: 1%;
     transform: translate(-50%, -50%);
     width: 160%;
@@ -153,5 +154,14 @@
     transform: translate(-50%, -50%);
     width: 100%;
     filter: saturate(200%);
+}
+.section-five details[open] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  place-items: center;
+} 
+.section-five details[open] summary {
+  font-size: 10px;
 }
 }
