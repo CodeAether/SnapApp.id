@@ -84,21 +84,42 @@
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Menambahkan efek bayangan untuk memberikan kesan tumpukan */
 }
 
-.section-one #result .details {
+/* result yt */
+.section-one #result .details-yt {
 	position: relative;
 	text-align: left;
 }
 
-.section-one #result .download-tabs {
+.section-one #result .download-tabs-yt {
 	margin: 1rem 0rem;
 }
 
-.section-one #result .img-result {
+.section-one #result .img-result-yt {
 	max-width: 100%;
 	max-height: 100%;
 	width: 100%;
 	height: auto;
 	object-fit: contain;
+}
+
+/* result instagram */
+.section-one #result .ig-item {
+	margin-bottom: 1rem;
+}
+.section-one #result .res-ig {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.section-one #result #img-ig {
+	max-width: 100%;
+	max-height: 100%;
+	width: 100%;
+	height: auto;
+	object-fit: contain;
+}
+.section-one #result .ig-download-button {
+	border-radius: 20px;
 }
 
 .section-one .input-group {
