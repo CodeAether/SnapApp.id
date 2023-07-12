@@ -3,53 +3,106 @@ const app = express();
 const port = 8000;
 const bodyParser = require("body-parser");
 const axios = require("axios");
+const mongoose = require("mongoose");
+const Routes = require("./router/router.js");
+
+require("dotenv").config();
+
+async function connectDB() {
+	await mongoose
+		.connect(process.env.DATABASE_URL, {
+			useNewUrlParser: true,
+			useUnifiedTopology: true,
+		})
+		.then(() => {
+			console.log("Terhubung ke MongoDB");
+		})
+		.catch((err) => {
+			console.error("Koneksi ke MongoDB gagal:", err);
+		});
+}
+
+const dataSchema = new mongoose.Schema({
+	visitorCount: {
+		type: Number,
+		default: 0,
+	},
+	totalTodayVisitor: {
+		type: Number,
+		default: 0,
+	},
+	totalDownload: {
+		type: Number,
+		default: 0,
+	},
+});
+
+const Data = mongoose.model("Data", dataSchema);
+
+// Middleware untuk update data
+app.use(async (req, res, next) => {
+	if (
+		!req.url.startsWith("/css") &&
+		!req.url.startsWith("/js") &&
+		!req.url.startsWith("/img")
+	) {
+		try {
+			let data = await Data.findOne();
+			if (!data) {
+				data = new Data();
+			}
+			// total visitor
+			data.visitorCount += 1;
+
+			// total download
+			if (req.url.startsWith("/api")) {
+				data.totalDownload += 1;
+			}
+
+			// total visitor today
+			const today = new Date().toISOString().split("T")[0];
+			if (data.lastUpdated && data.lastUpdated !== today) {
+				data.totalTodayVisitor = 1;
+			} else {
+				data.totalTodayVisitor += 1;
+			}
+			data.lastUpdated = today;
+
+			// save data
+			await data.save();
+
+			// add to req
+			req.visitor = data.visitorCount;
+			req.totalDownload = data.totalDownload;
+			req.totalTodayVisitor = data.totalTodayVisitor;
+		} catch (err) {
+			console.error("Gagal mengupdate data:", err);
+		}
+	}
+	next();
+});
 
 //connect ejs
 app.set("view engine", "ejs");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+// Middleware untuk mendeteksi bahasa
+app.use((req, res, next) => {
+	const acceptLanguage = req.headers["accept-language"];
+	const languages = acceptLanguage ? acceptLanguage.split(",") : [];
+	const language =
+		languages.length > 0 ? languages[0].split(";")[0] : "unknown";
+	req.language = language;
+	next();
+});
+
 //build-in middleware
 app.use(express.static("public"));
 
-app.get("/", async (req, res) => {
-	res.render("index");
-});
+app.use("/", Routes);
 
-app.get("/tos", (req, res) => {
-	res.render("tos");
-});
-
-app.get("/privacypolicy", (req, res) => {
-	res.render("privacypolicy");
-});
-
-app.get("/:dlmenu", async (req, res) => {
-	menu = req.params.dlmenu;
-	try {
-		if (["youtube", "tiktok", "facebook", "instagram"].includes(menu)) {
-			res.render(`page/${menu}`);
-		}
-	} catch (e) {
-		res.status(200).json([e.message]);
-	}
-});
-
-app.post("/api", async (req, res) => {
-	if (!req.body.url) return res.status(400).json(["Url Missing"]);
-	try {
-		type = req.body.type;
-		url = req.body.url || "";
-		const data = await axios.post(`http://localhost:3000/api`, {
-			url,
-			type,
-		});
-		res.json(data.data);
-	} catch (e) {
-		res.status(200).json([e.message]);
-	}
-});
-
-app.listen(port, () => {
+app.listen(port, async () => {
+	await connectDB();
 	console.log(`http://localhost:${port}/`);
 });
