@@ -19,27 +19,10 @@
 }
 .section-three .image #bulat {
   position: absolute;
-  top: 170%;
-  left: 90%;
-  transform: translate(-50%, -50%);
-  width: 10%;
-  filter: saturate(200%);
-}
-.section-three .image #bulat2 {
-  position: absolute;
   top: 200%;
-  left: 10%;
+  left: 5%;
   transform: translate(-50%, -50%);
-  width: 10%;
-  filter: saturate(200%);
-}
-
-.section-three .image #bulat3 {
-  position: absolute;
-  top: 220%;
-  left: 90%;
-  transform: translate(-50%, -50%);
-  width: 10%;
+  width: 60%;
   filter: saturate(200%);
 }
 
@@ -229,6 +212,10 @@
     background-color: var(--hijau);
     margin-top: 1.3em;
   }
+  .section-three .image #bulat {
+    top: 160%;
+    width: 120%;
+  }
 }
 /* phone */
 @media (max-width: 450px) {
@@ -241,10 +228,16 @@
   .section-three .penjelasan h4 {
     font-size: 13px;
   }
+  .section-three .image #bulat {
+    top: 170%;
+    width: 100%;
+  }
 }
 
-/* @media (min-width: 414px) and (max-width: 450px) and (min-height: 746px) and (max-height: 796px) {
+@media (max-width: 375px)  {
   .section-three .image #bulat {
-    top: 150%;
+    top: 180%;
+    width: 140%;
   }
-} */
+}
+
