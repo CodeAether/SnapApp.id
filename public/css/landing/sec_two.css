@@ -6,45 +6,51 @@
 }
 
 .section-two {
-	display: grid;
-	place-items: center;
+	display: flex;
 	justify-content: center;
-	width: 80%;
-	height: 30vh;
-	background-color: var(--putih);
-	color: var(--gelap);
-	padding: 1rem 3% 1rem;
-	margin-left: 10%;
-	margin-bottom: 13px;
-	border-radius: 20px;
-	background-color: rgb(245, 254, 253); /* Warna biru dengan tingkat transparansi 0.5 */
-	/* overflow: hidden; */
-	box-shadow: 0 0 10px 5px rgba(15, 245, 203, 0.7);
+	align-items: center;
+	width: 100%;
+	margin-bottom: 4rem;
 }
-
 
 .section-two .parent {
 	display: flex;
-	justify-content: space-around;
-  }
-
-.section-two .parent .content {
-	font-size: 25px;
-	padding: 50px;
-	text-align: center;
-	width: 268.17px;
-	height: 165px;
-  }  
-
-.section-two .parent .content p {
-	font-size: 15px;
+	justify-content: center;
+	align-items: center;
+	min-height: 30vh;
+	width: 80%;
+	background-color: var(--putih);
+	color: var(--gelap);
+	padding: 1rem 3% 1rem;
+	border-radius: 20px;
+	background-color: rgb(
+		245,
+		254,
+		253
+	); /* Warna biru dengan tingkat transparansi 0.5 */
+	/* overflow: hidden; */
+	box-shadow: 0 0 10px 5px rgba(15, 245, 203, 0.7);
 }
-.section-two .parent .content .icon{
+.section-two .parent .content-wrapper {
+	min-width: 80%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.section-two .parent .content-wrapper .content {
+	font-size: 25px;
+	padding: 1rem;
+	text-align: center;
+}
+
+.section-two .parent .content-wrapper .content p {
+	font-size: 1rem;
+}
+.section-two .parent .content-wrapper .content .icon {
 	display: flex;
 	justify-content: center;
 	font-size: 40px;
-} 
-
+}
 
 /* MQ */
 /* laptop */
@@ -55,47 +61,20 @@
 }
 /* Tablet */
 @media (max-width: 768px) {
-	.section-two {
-		height: 25vh;
-	}
-
-	.section-two .parent .content {
-		display: grid;
-		padding: 20px;
-		width: px;
-		align-items: center;
-		height: 110px;
-		justify-content: center;
-		text-align: center;
-	}
-
 	.section-two .parent {
-		grid-template-columns: repeat(2, 1fr);
-	}
-
-	.section-two h3 {
-		font-size: 1.5rem;
+		min-height: 15vh;
 	}
 }
 /* phone */
 @media (max-width: 450px) {
-	.section-two {
-		height: 20vh;
-	}
-	.section-two .parent .content {
-		display: grid;
-		padding: 20px;
-		width: 92.19px;
-		align-items: center;
-		height: 110px;
-		justify-content: center;
-		text-align: center;
+	.section-two .parent {
+		min-height: 15vh;
 	}
 	.section-two .parent .content h3 {
 		font-size: 2rem;
 	}
 
 	.section-two .parent .content p {
-		font-size: 1rem;
+		font-size: 0.5rem;
 	}
 }

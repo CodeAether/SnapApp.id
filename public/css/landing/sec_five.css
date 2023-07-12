@@ -1,101 +1,82 @@
 :root {
-  --gelap: #1b2326;
-  --abu: #3a4f52;
-  --hijau: #0ff5cb;
-  --putih: #f5fefd;
+	--gelap: #1b2326;
+	--abu: #3a4f52;
+	--hijau: #0ff5cb;
+	--putih: #f5fefd;
 }
 .section-five {
-  width: 100%;
-  height: 110vh;
-}
-
-.section-five .image #kanan {
-  position: absolute;
-  top: 395%;
-  left: 1%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  filter: saturate(200%);
-}
-.section-five .image #kiri {
-  position: absolute;
-  top: 415%;
-  left: 70%;
-  transform: translate(-50%, -50%);
-  width: 60%;
-  filter: saturate(200%);
+	width: 100%;
+	min-height: 60vh;
 }
 
 .section-five h2 {
-  padding-top: 60px;
-  margin: 20px auto 80px;
-  font-size: 38px;
-  font-weight: 300;
-  text-align: center;
-  letter-spacing: 2px;
-  line-height: 1.5;
+	padding-top: 60px;
+	margin: 20px auto 80px;
+	font-size: 38px;
+	font-weight: 300;
+	text-align: center;
+	letter-spacing: 2px;
+	line-height: 1.5;
 }
 
 .section-five details {
-  width: 75%;
-  min-height: 5px;
-  max-width: 700px;
-  padding: 25px 70px 25px 45px;
-  margin: 0 auto;
-  position: relative;
-  font-size: 22px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 15px;
-  box-sizing: border-box;
-  transition: all 0.3s;
-}
-
-.section-five details + details {
-  margin-top: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 75%;
+	min-height: 5px;
+	max-width: 700px;
+	padding: 25px 45px 25px 45px;
+	margin: 2rem auto;
+	position: relative;
+	font-size: 22px;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-radius: 15px;
+	box-sizing: border-box;
+	transition: all 0.3s;
 }
 
 .section-five details[open] {
-  max-height: 90px;
-  background-color: #f6f7f8;
-  color: #000;
-  max-width: 300px;
-  box-shadow: 2px 2px 20px rgba(16, 245, 204);
+	background-color: #f6f7f8;
+	color: #000;
+	box-shadow: 2px 2px 20px rgba(16, 245, 204);
 }
 
 .section-five details p {
-  color: #000;
-  font-weight: 300;
+	color: #000;
+	font-weight: 300;
 }
 
 .section-five summary {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-weight: 500;
-  cursor: pointer;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-weight: 500;
+	cursor: pointer;
 }
 
 .section-five summary::-webkit-details-marker {
-  display: none;
+	display: none;
 }
 
 .section-five .control-icon {
-  fill: #0ff5cb;
-  transition: 0.3s ease;
-  pointer-events: none;
+	fill: #0ff5cb;
+	transition: 0.3s ease;
+	pointer-events: none;
 }
 
 .section-five .control-icon-close {
-  display: none;
+	display: none;
 }
 
 .section-five details[open] .control-icon-close {
-  display: initial;
-  transition: 0.3s ease;
+	display: initial;
+	transition: 0.3s ease;
 }
 
 .section-five details[open] .control-icon-expand {
-  display: none;
+	display: none;
 }
 
 /* MQ */
@@ -104,64 +85,31 @@
 }
 /* Tablet */
 @media (max-width: 768px) {
-  .section-five {
-    height: 70vh;
-  }
-  .section-five .image #kanan {
-    position: absolute;
-    top: 360%;
-    left: 1%;
-    transform: translate(-50%, -50%);
-    width: 140%;
-    filter: saturate(200%);
-}
-  .section-five .image #kiri {
-    position: absolute;
-    top: 370%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    filter: saturate(200%);
-}
+	.section-five {
+		min-height: 70vh;
+	}
 }
 /* phone */
 @media (max-width: 450px) {
-  .section-five details p {
-    font-size: 1rem;
-  }
+	.section-five details p {
+		font-size: 1rem;
+	}
 
-  .section-five summary {
-    font-size: 1.2rem;
-  }
+	.section-five summary {
+		font-size: 1.2rem;
+	}
 
-  .section-five details {
-    max-height: 12rem;
-    display: flex;
-    flex-direction: row;
-  }
-  .section-five .image #kanan {
-    position: absolute;
-    top: 370%;
-    left: 1%;
-    transform: translate(-50%, -50%);
-    width: 160%;
-    filter: saturate(200%);
-}
-.section-five .image #kiri {
-    position: absolute;
-    top: 370%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    filter: saturate(200%);
-}
-.section-five details[open] {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  place-items: center;
-} 
-.section-five details[open] summary {
-  font-size: 10px;
-}
+	.section-five details {
+		max-height: 12rem;
+		display: flex;
+		flex-direction: row;
+	}
+	.section-five details[open] {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	.section-five details[open] summary {
+		font-size: 10px;
+	}
 }
