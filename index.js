@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 const port = 8000;
 const bodyParser = require("body-parser");
-const axios = require("axios");
 const mongoose = require("mongoose");
 const Routes = require("./router/router.js");
 

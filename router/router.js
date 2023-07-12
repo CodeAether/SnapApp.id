@@ -3,21 +3,44 @@ const app = express.Router();
 const axios = require("axios");
 
 app.get("/", async (req, res) => {
-	res.render("index", { req });
+	if (req.language === "id") {
+		res.redirect("/id");
+	} else {
+		res.redirect("/en");
+	}
+});
+app.get("/id", async (req, res) => {
+	res.render("id/index", { req });
+});
+app.get("/en", async (req, res) => {
+	res.render("en/index", { req });
 });
 
 app.get("/tos", (req, res) => {
-	res.render("page/tos");
+	res.render("en/page/tos");
 });
 
 app.get("/privacypolicy", (req, res) => {
-	res.render("page/privacypolicy");
+	res.render("en/page/privacypolicy");
 });
 
-app.get("/download/:bahasa", async (req, res) => {
-	bahasa = req.params.bahasa;
+app.get("/download/", async (req, res) => {
+	if (req.language === "id") {
+		res.redirect("/download/id");
+	} else {
+		res.redirect("/download/en");
+	}
+});
+app.get("/download/id", async (req, res) => {
 	try {
-		res.render("page/download-page", { bahasa });
+		res.render("id/page/download-page");
+	} catch (e) {
+		res.status(200).json([e.message]);
+	}
+});
+app.get("/download/en", async (req, res) => {
+	try {
+		res.render("en/page/download-page");
 	} catch (e) {
 		res.status(200).json([e.message]);
 	}
