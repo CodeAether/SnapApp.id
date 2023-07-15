@@ -1,253 +1,303 @@
 :root {
-	--gelap: #1b2326;
-	--abu: #3a4f52;
-	--hijau: #0ff5cb;
-	--putih: #eff3f3;
+  --gelap: #1b2326;
+  --abu: #3a4f52;
+  --hijau: #0ff5cb;
+  --putih: #eff3f3;
 }
 
 /* Navbar CSS */
 .navbar {
-	background-color: var(
-		--gelap
-	) !important; /* Menggunakan variabel warna --gelap */
+  background-color: var(
+    --gelap
+  ) !important; /* Menggunakan variabel warna --gelap */
 }
 
 .navbar .navbar-logo {
-	margin-left: 1rem;
-	font-size: 1.5rem;
-	font-weight: 700;
-	color: var(--putih); /* Menggunakan variabel warna --putih */
+  margin-left: 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--putih); /* Menggunakan variabel warna --putih */
 }
 
 .navbar .navbar-logo span {
-	color: var(--hijau); /* Menggunakan variabel warna --hijau */
+  color: var(--hijau); /* Menggunakan variabel warna --hijau */
 }
 
 /* Section One CSS */
 .section-one {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background-color: #fbc2eb;
-	background-image: linear-gradient(0deg, #3a4f52, var(--abu), #1b2326);
-	padding: 100px 0;
-	text-align: center;
-	position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fbc2eb;
+  background-image: linear-gradient(0deg, #3a4f52, var(--abu), #1b2326);
+  padding: 100px 0;
+  text-align: center;
+  position: relative;
 }
 
 .section-one .section-one-content {
-	margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 .section-one .section-one-heading {
-	color: #fff;
-	font-size: 36px;
-	font-weight: bold;
-	margin-bottom: 20px;
+  color: #fff;
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
 .section-one .section-one-text {
-	color: #fff;
-	font-size: 18px;
+  color: #fff;
+  font-size: 18px;
 }
 
 .section-one .section-one-form {
-	background-color: transparent;
-	margin: 0 auto;
+  background-color: transparent;
+  margin: 0 auto;
 }
 .section-one .section-one-form input {
-	border-radius: 3px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Menambahkan efek bayangan untuk memberikan kesan tumpukan */
+  border-radius: 3px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Menambahkan efek bayangan untuk memberikan kesan tumpukan */
 }
 
 .section-one #pasteBtn {
-	background-color: white;
-	margin-left: 5px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Menambahkan efek bayangan untuk memberikan kesan tumpukan */
+  background-color: white;
+  margin-left: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Menambahkan efek bayangan untuk memberikan kesan tumpukan */
 }
 
 .section-one .buttonUnduh {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
 }
 .section-one .buttonUnduh .btn {
-	border-radius: 5px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Menambahkan efek bayangan untuk memberikan kesan tumpukan */
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Menambahkan efek bayangan untuk memberikan kesan tumpukan */
 }
 
 .section-one #result {
-	background-color: white;
-	border-radius: 10px;
-	padding: 2rem;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Menambahkan efek bayangan untuk memberikan kesan tumpukan */
+  background-color: white;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Menambahkan efek bayangan untuk memberikan kesan tumpukan */
 }
 
 /* result yt */
 .section-one #result .details-yt {
-	position: relative;
-	text-align: left;
+  position: relative;
+  text-align: left;
 }
 
 .section-one #result .download-tabs-yt {
-	margin: 1rem 0rem;
+  margin: 1rem 0rem;
 }
 
 .section-one #result .img-result-yt {
-	max-width: 100%;
-	max-height: 100%;
-	width: 100%;
-	height: auto;
-	object-fit: contain;
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
 /* result instagram */
 .section-one #result .ig-item {
-	margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 .section-one #result .res-ig {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .section-one #result #img-ig {
-	max-width: 100%;
-	max-height: 100%;
-	width: 100%;
-	height: auto;
-	object-fit: contain;
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 .section-one #result .ig-download-button {
-	border-radius: 20px;
+  border-radius: 20px;
 }
 
 .section-one .input-group {
-	width: 100%;
+  width: 100%;
 }
 
 .section-one .form-control {
-	border-radius: 0;
+  border-radius: 0;
 }
 
 .section-one .btn-primary {
-	border-radius: 0;
-	display: block;
-	margin-top: 10px;
+  border-radius: 0;
+  display: block;
+  margin-top: 10px;
 }
 
 .section-one .btn-primary:hover {
-	opacity: 0.8;
+  opacity: 0.8;
 }
 
 .section-one .section-one-subheading {
-	color: #333;
-	font-size: 24px;
-	font-weight: bold;
-	margin-bottom: 20px;
+  color: #333;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
 /* Section Two CSS */
-.section-two {
-	padding: 100px 0;
-	background-color: var(--abu); /* Menggunakan variabel warna --abu */
-	color: var(--putih); /* Menggunakan variabel warna --putih */
+.card {
+  border: none;
 }
-
-.section-two .section-two-video {
-	margin-bottom: 30px;
+ .card-img {
+  border-radius: 0;
+  
 }
-
-.section-two .section-two-tutorial {
-	text-align: left;
+.headertext {
+	color: var(--putih);
+	width: 100%;
+	text-align: center;
 }
-
-.section-two .section-two-subheading {
-	font-size: 24px;
+.headertext .judulgede {
 	font-weight: bold;
-	margin-bottom: 20px;
 }
-
-.section-two .section-two-text {
-	font-size: 18px;
-	margin-bottom: 20px;
+.card .card-body #judulisi {
+	font-weight: bold;
 }
+ .vgr-cards {
+  .card {
+    display: flex;
+    flex-flow: wrap;
+    flex: 100%;
+    margin-bottom: 40px;
 
-.section-two .section-two-steps li {
-	margin-bottom: 10px;
+    &:nth-child(even) .card-img-body {
+      order: 2;
+    }
+
+    &:nth-child(even) .card-body {
+      padding-left: 0;
+      padding-right: 1.25rem;
+    }
+
+    @media (max-width: 576px) {
+      display: block;
+    }
+  }
+
+  .card-img-body {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+	display: flex;
+	align-items: center;
+
+    @media (max-width: 576px) {
+      width: 100%;
+      height: 200px;
+      margin-bottom: 20px;
+    }
+  }
+
+  .card-img {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    margin-left: 50%;
+    transform: translateX(-50%);
+
+    @media (max-width: 1140px) {
+      margin: 0;
+      transform: none;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .card-body {
+    flex: 2;
+    padding: 0 0 0 1.25rem;
+	color: var(--putih);
+
+    @media (max-width: 576px) {
+      padding: 0;
+    }
+  }
 }
 
 /* Footer CSS */
 .footer {
-	background-color: var(--gelap); /* Menggunakan variabel warna --gelap */
-	color: var(--putih); /* Menggunakan variabel warna --putih */
-	padding: 40px 0;
+  background-color: var(--gelap); /* Menggunakan variabel warna --gelap */
+  color: var(--putih); 
+  padding: 40px 0;
 }
 
 .footer .footer-heading {
-	font-size: 20px;
-	font-weight: bold;
-	margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
 .footer .footer-links li {
-	margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .footer .footer-links a {
-	color: var(--putih); /* Menggunakan variabel warna --putih */
+  color: var(--putih); /* Menggunakan variabel warna --putih */
 }
 
 .footer .footer-social {
-	list-style: none;
-	padding: 0;
-	margin-top: 10px;
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
 }
 
 .footer .footer-social li {
-	display: inline-block;
-	margin-right: 10px;
+  display: inline-block;
+  margin-right: 10px;
 }
 
 .footer .footer-social a {
-	color: var(--hijau); /* Menggunakan variabel warna --hijau */
-	font-size: 18px;
-	text-decoration: none;
+  color: var(--hijau); /* Menggunakan variabel warna --hijau */
+  font-size: 18px;
+  text-decoration: none;
 }
 
 .footer .footer-social a:hover {
-	color: #007bff;
+  color: #007bff;
 }
 
 /* toast style */
 .colored-toast.swal2-icon-success {
-	background-color: #a5dc86 !important;
+  background-color: #a5dc86 !important;
 }
 
 .colored-toast.swal2-icon-error {
-	background-color: #f27474 !important;
+  background-color: #f27474 !important;
 }
 
 .colored-toast.swal2-icon-warning {
-	background-color: #f8bb86 !important;
+  background-color: #f8bb86 !important;
 }
 
 .colored-toast.swal2-icon-info {
-	background-color: #3fc3ee !important;
+  background-color: #3fc3ee !important;
 }
 
 .colored-toast.swal2-icon-question {
-	background-color: #87adbd !important;
+  background-color: #87adbd !important;
 }
 
 .colored-toast .swal2-title {
-	color: white;
+  color: white;
 }
 
 .colored-toast .swal2-close {
-	color: white;
+  color: white;
 }
 
 .colored-toast .swal2-html-container {
-	color: white;
+  color: white;
 }

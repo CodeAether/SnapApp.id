@@ -1,139 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1.0" />
-		<link
-			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-			rel="stylesheet" />
-		<link
-			rel="stylesheet"
-			href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
-		<link
-			rel="stylesheet"
-			href="../css/page/download-page.css" />
-		<title>SnapApp - Youtube Downloader</title>
-	</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/page/download-page.css" />
+    <title>SnapApp - Youtube Downloader</title>
+  </head>
 
-	<body>
-		<!-- Navbar -->
-		<%- include('layout/navbar') %>
+  <body>
+    <!-- Navbar -->
+    <%- include('layout/navbar') %>
 
-		<!-- Main Content -->
-		<div class="content">
-			<section class="section-one">
-				<div class="container">
-					<div class="col">
-						<div class="section-one-content mt-4">
-							<h1 class="section-one-heading">
-								SnapApp - Download Your Files Easily
-							</h1>
-							<p class="section-one-text">
-								SnapApp is a user-friendly tool that allows you to download
-								files from various sources with ease.
-							</p>
-						</div>
-						<div class="section-one-form mt-4">
-							<div class="row">
-								<div class="col-sm-12 inputbg">
-									<div class="input-group">
-										<input
-											type="text"
-											class="form-control"
-											id="link_url"
-											placeholder="Input our URL in here..." />
-										<div class="input-group-append">
-											<button
-												class="btn"
-												type="button"
-												id="pasteBtn">
-												<i class="bi bi-clipboard"></i>
-											</button>
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-12 mt-3 buttonUnduh">
-									<button
-										id="downloadButton"
-										class="btn btn-primary btn-lg"
-										type="submit">
-										<i class="bi bi-cloud-download-fill"></i> Download
-									</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div id="resultWrapper"></div>
-				</div>
-			</section>
+    <!-- Main Content -->
+    <div class="content">
+      <section class="section-one">
+        <div class="container">
+          <div class="col">
+            <div class="section-one-content mt-4">
+              <h1 class="section-one-heading">
+                SnapApp - Download Your Files Easily
+              </h1>
+              <p class="section-one-text">
+                SnapApp is a user-friendly tool that allows you to download
+                files from various sources with ease.
+              </p>
+            </div>
+            <div class="section-one-form mt-4">
+              <div class="row">
+                <div class="col-sm-12 inputbg">
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="link_url"
+                      placeholder="Input our URL in here..."
+                    />
+                    <div class="input-group-append">
+                      <button class="btn" type="button" id="pasteBtn">
+                        <i class="bi bi-clipboard"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-12 mt-3 buttonUnduh">
+                  <button
+                    id="downloadButton"
+                    class="btn btn-primary btn-lg"
+                    type="submit"
+                  >
+                    <i class="bi bi-cloud-download-fill"></i> Download
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="resultWrapper"></div>
+        </div>
+      </section>
 
-			<section class="section-two">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-6">
-							<div class="section-two-video">
-								<iframe
-									width="100%"
-									height="315"
-									src="https://www.youtube.com/embed/_2rvt2DHQLg"
-									frameborder="0"
-									allowfullscreen></iframe>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="section-two-tutorial">
-								<h3 class="section-two-subheading">
-									How to Download from Youtube using SnapApp
-								</h3>
-								<p class="section-two-text">
-									Follow these simple steps to download videos from Youtube
-									using SnapApp:
-								</p>
-								<ol class="section-two-steps">
-									<li>
-										Step 1: Go to Youtube and find the video you want to
-										download.
-									</li>
-									<li>
-										Step 2: Copy the URL of the video from the address bar of
-										your browser.
-									</li>
-									<li>
-										Step 3: Paste the URL into the input field on SnapApp.
-									</li>
-									<li>Step 4: Click the "Download" button.</li>
-									<li>
-										Step 5: SnapApp will process the video and provide you with
-										a download link.
-									</li>
-									<li>
-										Step 6: Click the download link to save the video to your
-										device.
-									</li>
-								</ol>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
+      <!-- Section two -->
+	  <section class="section-two" style="background-color: #3a4f52">
+		<div class="container">
+		  <div class="headertext">
+			<h1 class="judulgede">How to Download with SnapApp</h1>
+			<p class="section-two-text">
+			  Follow these simple steps to download content videos/foto from any
+			  Sosial media using SnapApp:
+			</p>
+		  </div>
+		  <div class="card-group vgr-cards">
+			<div class="card" style="background-color: #3a4f52">
+			  <div class="card-img-body">
+				<img
+				  class="card-img"
+				  src="https://picsum.photos/500/230"
+				  alt="Card image cap"
+				/>
+			  </div>
+			  <div class="card-body">
+				<ul class="section-two-steps">
+				  <li id="judulisi" style="font-size: 20px;">
+					Open the social media platform from which you want to
+					download any content! :
+				  </li>
+				  <br>
+				  <p>
+					If you wish to download content from various social media
+					platforms, the first step is to find the link to the content
+					through each platform's respective features. Usually, you
+					can locate the link by using the "share" feature available
+					on the posts or content you want to download. Once you have
+					obtained the link, you can utilize Snapapp as a versatile
+					tool that supports not only one but multiple social media
+					platforms simultaneously. With Snapapp, you can effortlessly
+					and swiftly download content from various social media
+					platforms.
+				  </p>
+				</ul>
+			  </div>
+			</div>
+			<div class="card" style="background-color: #3a4f52">
+			  <div class="card-img-body">
+				<img
+				  class="card-img"
+				  src="https://picsum.photos/400/200"
+				  alt="Card image cap"
+				/>
+			  </div>
+			  <div class="card-body">
+				<ul class="section-two-steps">
+				  <li id="judulisi" style="font-size: 20px;">
+					Once you have successfully located the link to the content
+					you wish to download, the next step is to return to the
+					Snapapp website :
+				  </li>
+				  <br>
+				  <p>
+					What are the benefits of using our website? You can download
+					content from anywhere you wish simply by pasting the link
+					into the input box above. Currently, we support downloading
+					from 4 social media platforms, but we are constantly working
+					to expand our support to include downloaders for other
+					social media applications.
+				  </p>
+				</ul>
+			  </div>
+			</div>
+			<div class="card" style="background-color: #3a4f52">
+			  <div class="card-img-body">
+				<img
+				  class="card-img"
+				  src="https://picsum.photos/450/250"
+				  alt="Card image cap"
+				/>
+			  </div>
+			  <div class="card-body" style="display: flex; justify-content: center; align-items: center;">
+				<ul class="section-two-steps">
+				  <li id="judulisi" style="font-size: 20px;">
+					After successfully entering the link of the content you want
+					to download, just wait for a few moments until the process
+					is completed quickly and efficiently :
+				  </li>
+				  <br>
+				  <p>
+					After the process is completed, you can now download the
+					content and choose your preferred resolution before
+					downloading it to your device. Additionally, to download
+					YouTube content, you can find the download button within the
+					three-dot menu at the end of the video. Click on that
+					button, and you will find the download option. Before
+					downloading any content, please read our terms of service.
+				  </p>
+				</ul>
+				<br>
+			  </div>
+			</div>
+		  </div>
 		</div>
+	  </section>
+    </div>
 
-		<!-- Footer -->
-		<%- include('layout/footer') %>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-		<script
-			src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"
-			integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA=="
-			crossorigin="anonymous"
-			referrerpolicy="no-referrer"></script>
-		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-		<script
-			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-			integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-			crossorigin="anonymous"></script>
-		<script src="../js/download-page.js"></script>
-	</body>
+    <!-- Footer -->
+    <%- include('layout/footer') %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"
+      integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../js/download-page.js"></script>
+  </body>
 </html>
