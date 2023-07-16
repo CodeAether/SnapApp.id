@@ -41,8 +41,9 @@
   height: 5px;
   background-color: var(--hijau);
   margin-top: 1.3em;
+  left: 40%;
+  position: relative;
 }
-
 .section-three .content {
   display: flex;
   justify-content: center;

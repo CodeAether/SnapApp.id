@@ -148,85 +148,196 @@
 }
 
 /* Section Two CSS */
-.card {
-  border: none;
-}
- .card-img {
-  border-radius: 0;
-  
-}
-.headertext {
+.section-two .headertext {
 	color: var(--putih);
 	width: 100%;
 	text-align: center;
 }
-.headertext .judulgede {
+.section-two .headertext .judulgede {
 	font-weight: bold;
 }
-.card .card-body #judulisi {
-	font-weight: bold;
+
+.section-two .headtwo {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
 }
- .vgr-cards {
-  .card {
-    display: flex;
-    flex-flow: wrap;
-    flex: 100%;
-    margin-bottom: 40px;
 
-    &:nth-child(even) .card-img-body {
-      order: 2;
-    }
+.section-two .headtwo .card {
+  max-width: 700px;
+  background-color: var(--abu);
+  margin-bottom: 25px;
+  display: flex;
+}
 
-    &:nth-child(even) .card-body {
-      padding-left: 0;
-      padding-right: 1.25rem;
-    }
+.section-two .headtwo .card h5 {
+  font-weight: bold;
+}
 
-    @media (max-width: 576px) {
-      display: block;
-    }
+
+.section-two .headtwo .row {
+  background-color: white;
+  margin-bottom: 20px;
+  align-items: center;
+  border-radius: 15px;
+}
+
+/* MQ SECTION-TWO */
+/* laptop */
+@media (max-width: 1366px) {
+}
+/* Tablet */
+@media (max-width: 768px) {
+  .section-two .headtwo .card {
+  max-width: 350px;
   }
+  .section-two .headtwo .card .img {
+    min-width: 350px;
+    min-height: 150px;
+  }
+  .section-two .headtwo .card h5 {
+    font-size: 15px;
+  }
+  .section-two .headtwo .card p {
+    font-size: 10px;
+  }
+}
+/* phone */
+@media (max-width: 450px) {
+  .section-two .headtwo .card {
+  max-width: 250px;
+  }
+  .section-two .headtwo .card .img {
+  min-width: 250px;
+  min-height: 150px
+  }
+  .section-two .headtwo .card h5 {
+    font-size: 15px;
+  }
+  .section-two .headtwo .card p {
+    font-size: 10px;
+  }
+}
 
-  .card-img-body {
-    flex: 1;
-    overflow: hidden;
-    position: relative;
+/* FAQ SECTION */
+.section-faq {
+	width: 100%;
+	min-height: 100vh;
+  background-image: url('../../img/ten.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: var(--abu);
+}
+
+.section-faq h2 {
+	padding-top: 60px;
+	/* margin: 20px auto 80px; */
+	font-size: 38px;
+	font-weight: 300;
+	text-align: center;
+	letter-spacing: 2px;
+	line-height: 1.5;
+  color: var(--putih);
+}
+
+.section-faq details {
 	display: flex;
+	justify-content: center;
 	align-items: center;
-
-    @media (max-width: 576px) {
-      width: 100%;
-      height: 200px;
-      margin-bottom: 20px;
-    }
-  }
-
-  .card-img {
-    width: 100%;
-    height: auto;
-    position: absolute;
-    margin-left: 50%;
-    transform: translateX(-50%);
-
-    @media (max-width: 1140px) {
-      margin: 0;
-      transform: none;
-      width: 100%;
-      height: auto;
-    }
-  }
-
-  .card-body {
-    flex: 2;
-    padding: 0 0 0 1.25rem;
-	color: var(--putih);
-
-    @media (max-width: 576px) {
-      padding: 0;
-    }
-  }
+	width: 75%;
+	min-height: 5px;
+	max-width: 700px;
+	padding: 25px 45px 25px 45px;
+	margin: 2rem auto;
+	position: relative;
+	font-size: 22px;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-radius: 15px;
+	box-sizing: border-box;
+	transition: all 0.3s;
+  background-color: var(--putih);
 }
 
+.section-faq details[open] {
+	background-color: #f6f7f8;
+	color: #000;
+}
+
+.section-faq details p {
+	color: #000;
+	font-weight: 300;
+}
+
+.section-faq summary {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-weight: 500;
+	cursor: pointer;
+}
+
+.section-faq summary::-webkit-details-marker {
+	display: none;
+}
+
+.section-faq .control-icon {
+	fill: var(--gelap);
+	transition: 0.3s ease;
+	pointer-events: none;
+}
+
+.section-faq .control-icon-close {
+	display: none;
+}
+
+.section-faq details[open] .control-icon-close {
+	display: initial;
+	transition: 0.3s ease;
+}
+
+.section-faq details[open] .control-icon-expand {
+	display: none;
+}
+
+/* MQ SECTION-FAQ */
+/* laptop */
+@media (max-width: 1366px) {
+}
+/* Tablet */
+@media (max-width: 768px) {
+	.section-faq {
+		min-height: 75vh;
+	}
+}
+/* phone */
+@media (max-width: 450px) {
+  .section-faq {
+    min-height: 110vh;
+  }
+	.section-faq details p {
+		font-size: 0.8rem;
+	}
+
+	.section-faq summary {
+		font-size: 1.2rem;
+	}
+
+	.section-faq details {
+		max-height: 12rem;
+		display: flex;
+		flex-direction: row;
+	}
+	.section-faq details[open] {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	.section-faq details[open] summary {
+		font-size: 12px;
+	}
+}
 /* Footer CSS */
 .footer {
   background-color: var(--gelap); /* Menggunakan variabel warna --gelap */
