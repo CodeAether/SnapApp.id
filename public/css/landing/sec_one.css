@@ -17,68 +17,61 @@
 }
 .section-one .blub-motion {
 	position: absolute;
-	align-content: center;
-	display: flex;
-	justify-content: center;
-	width: 500px;
-	height: 500px;
-	left: 55%;
-	top: 25%;
-}
-
-.section-one .blub-motion .blubs {
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
 	background: var(--putih);
 	animation: morph 8s ease-in-out infinite;
 	border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-	height: 400px;
-	transition: all 1s ease-in-out;
-	width: 400px;
 	box-shadow: 0 0 10px 5px rgba(15, 245, 203, 1);
+	z-index: 1; /* Menetapkan z-index yang lebih rendah */
 }
 
 @keyframes morph {
-	0%{
+	0% {
 		border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
 	}
-	50%{
+	50% {
 		border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
 	}
-	100%{
+	100% {
 		border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
 	}
 }
 
 .section-one .row {
 	display: flex;
+	justify-content: center;
+	align-items: center;
 	flex-direction: row-reverse;
 }
 
 .section-one .img #blur {
 	position: absolute;
-	top: 15%;
+	top: 0%;
 	left: 10%;
 	transform: translate(-50%, -50%);
-	width: 40%;
 	filter: saturate(200%);
-  }
+}
 
 .section-one .row .image {
 	flex: 1 1 35rem;
 	float: right;
-	z-index: 1;
 }
 
 .section-one .row .image img {
 	width: 100%;
+	position: relative; /* Tambahkan position: relative; agar z-index berlaku */
+	z-index: 2; /* Menetapkan z-index yang lebih tinggi daripada blub-motion */
 }
-
 
 .section-one .row .content {
 	text-align: start;
 	display: flex;
 	flex-direction: column;
 	flex: 1 1 45rem;
-	padding: 13rem 5rem;
+	padding: 5rem;
 	float: left;
 }
 
@@ -117,13 +110,8 @@
 /* MQ */
 /* laptop */
 @media (max-width: 1366px) {
-
 }
 @media (max-width: 1024px) {
-	.section-one .blub-motion {
-		top: 13%;
-		left: 50%;
-	}
 }
 /* Tablet */
 @media (max-width: 768px) {
@@ -148,16 +136,6 @@
 	.section-one .row .content h3 {
 		font-size: 1.5rem;
 	}
-	.section-one .blub-motion {
-		width: 350px;
-		height: 350px;
-		top: 18%;
-		left: 23%;
-	}
-	.section-one .blub-motion .blubs {
-		width: 350px;
-		height: 350px;
-	}
 	.section-one .img #blur {
 		left: 5%;
 		top: 0;
@@ -170,16 +148,6 @@
 		display: flex;
 		justify-content: center;
 		min-height: 45rem;
-	}
-	.section-one .blub-motion {
-		width: 280px;
-		height: 280px;
-		top: 14%;
-		left: 12%;
-	}
-	.section-one .blub-motion .blubs {
-		width: 230px;
-		height: 230px;
 	}
 	.section-one .img #blur {
 		left: 5%;

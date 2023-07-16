@@ -34,11 +34,14 @@ const dataSchema = new mongoose.Schema({
 		type: Number,
 		default: 0,
 	},
+	lastUpdated: {
+		type: Date,
+		default: Date.now,
+	},
 });
 
 const Data = mongoose.model("Data", dataSchema);
 
-// Middleware untuk update data
 app.use(async (req, res, next) => {
 	if (
 		!req.url.startsWith("/css") &&
@@ -60,7 +63,10 @@ app.use(async (req, res, next) => {
 
 			// total visitor today
 			const today = new Date().toISOString().split("T")[0];
-			if (data.lastUpdated && data.lastUpdated !== today) {
+			if (
+				data.lastUpdated &&
+				data.lastUpdated.toISOString().split("T")[0] !== today
+			) {
 				data.totalTodayVisitor = 1;
 			} else {
 				data.totalTodayVisitor += 1;
@@ -73,7 +79,7 @@ app.use(async (req, res, next) => {
 			// add to req
 			req.visitor = data.visitorCount;
 			req.totalDownload = data.totalDownload;
-			req.totalTodayVisitor = data.totalTodayVisitor;
+			req.totalTodayVisitor = data.totalTodayVisitor; // Menggunakan nilai yang telah diperbarui setelah penyimpanan
 		} catch (err) {
 			console.error("Gagal mengupdate data:", err);
 		}
