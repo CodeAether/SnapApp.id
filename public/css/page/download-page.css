@@ -223,14 +223,21 @@
 /* FAQ SECTION */
 .section-faq {
 	width: 100%;
-	min-height: 100vh;
+	min-height: 80vh;
   background-image: url('../../img/ten.svg');
   background-repeat: no-repeat;
   background-size: cover;
   background-color: var(--abu);
 }
 
-.section-faq h2 {
+.section-faq .parent {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+}
+
+.section-faq .judulgede {
 	padding-top: 60px;
 	/* margin: 20px auto 80px; */
 	font-size: 38px;
@@ -241,102 +248,29 @@
   color: var(--putih);
 }
 
-.section-faq details {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 75%;
-	min-height: 5px;
-	max-width: 700px;
-	padding: 25px 45px 25px 45px;
-	margin: 2rem auto;
-	position: relative;
-	font-size: 22px;
-	border: 1px solid rgba(0, 0, 0, 0.1);
-	border-radius: 15px;
-	box-sizing: border-box;
-	transition: all 0.3s;
-  background-color: var(--putih);
+.section-faq .accordion {
+  background-color: var(--abu);
+  width: 700px;
 }
 
-.section-faq details[open] {
-	background-color: #f6f7f8;
-	color: #000;
+/* Ganti nilai 50px sesuai dengan tinggi yang diinginkan untuk h2 */
+.section-faq .accordion .accordion-item h2.accordion-header {
+  height: 100px;
+  line-height: 50px; /* Gunakan line-height yang sama dengan tinggi untuk mengatur posisi teks secara vertikal */
+  padding: 10px;
 }
 
-.section-faq details p {
-	color: #000;
-	font-weight: 300;
+.section-faq .accordion .accordion-item h2 {
+  /* border-radius: 20px; */
+  padding: 10px;
 }
 
-.section-faq summary {
-	width: 100%;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	font-weight: 500;
-	cursor: pointer;
-}
 
-.section-faq summary::-webkit-details-marker {
-	display: none;
-}
-
-.section-faq .control-icon {
-	fill: var(--gelap);
-	transition: 0.3s ease;
-	pointer-events: none;
-}
-
-.section-faq .control-icon-close {
-	display: none;
-}
-
-.section-faq details[open] .control-icon-close {
-	display: initial;
-	transition: 0.3s ease;
-}
-
-.section-faq details[open] .control-icon-expand {
-	display: none;
-}
-
-/* MQ SECTION-FAQ */
-/* laptop */
-@media (max-width: 1366px) {
-}
-/* Tablet */
-@media (max-width: 768px) {
-	.section-faq {
-		min-height: 75vh;
-	}
-}
-/* phone */
-@media (max-width: 450px) {
-  .section-faq {
-    min-height: 110vh;
-  }
-	.section-faq details p {
-		font-size: 0.8rem;
-	}
-
-	.section-faq summary {
-		font-size: 1.2rem;
-	}
-
-	.section-faq details {
-		max-height: 12rem;
-		display: flex;
-		flex-direction: row;
-	}
-	.section-faq details[open] {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-	}
-	.section-faq details[open] summary {
-		font-size: 12px;
-	}
+.section-faq .accordion .accordion-item .accordion-body {
+  /* height: 200px; */
+  top: 200px;
+  padding-top: 20px;
+  overflow-y: auto; /* Gunakan overflow-y: auto; jika Anda ingin menambahkan scrollbar jika konten terlalu panjang */
 }
 /* Footer CSS */
 .footer {
