@@ -1,6 +1,6 @@
 const linkUrl = document.getElementById("link_url");
 const resultWrapper = document.getElementById("resultWrapper");
-const privateKey = CryptoJS.AES.encrypt("SnapApp", "codeaether").toString();
+const privateKey = "codeaether";
 let typeUrl;
 let process = false;
 let regex =
@@ -13,7 +13,7 @@ const Toast = Swal.mixin({
 		popup: "colored-toast",
 	},
 	showConfirmButton: false,
-	timer: 2000,
+	timer: 5000,
 	timerProgressBar: true,
 });
 
@@ -32,7 +32,7 @@ function sleksiUrl(url) {
 	}
 }
 
-// paste funtion
+// Fungsi paste
 document.getElementById("pasteBtn").addEventListener("click", function () {
 	pasteBtn = document.getElementById("pasteBtn");
 	if (!linkUrl.value) {
@@ -40,7 +40,7 @@ document.getElementById("pasteBtn").addEventListener("click", function () {
 			if (text === "") {
 				await Toast.fire({
 					icon: "warning",
-					title: "No link to paste!",
+					title: "Tidak ada tautan yang akan ditempelkan!",
 				});
 				return;
 			}
@@ -53,53 +53,67 @@ document.getElementById("pasteBtn").addEventListener("click", function () {
 	}
 });
 
-// download function
+linkUrl.addEventListener("input", function () {
+	if (linkUrl.value === "") {
+		pasteBtn.innerHTML = `<i class="bi bi-clipboard"></i>`;
+	} else {
+		pasteBtn.innerHTML = `<i class="bi bi-x-circle"></i>`;
+	}
+});
+
+// Fungsi unduh
 document
 	.getElementById("downloadButton")
 	.addEventListener("click", async function () {
-		// return
+		// Kembalikan jika tidak ada URL yang dimasukkan
 		if (!linkUrl.value) {
 			return await Toast.fire({
 				icon: "error",
-				title: "Please, Enter the url first!",
+				title: "Silakan masukkan URL terlebih dahulu!",
 			});
 		}
 		if (process) {
 			return await Toast.fire({
 				icon: "error",
-				title: "Oops, you are in process!",
+				title: "Oops, Anda sedang dalam proses!",
 			});
 		}
 		if (!regex.test(linkUrl.value)) {
 			return await Toast.fire({
 				icon: "error",
-				title: "Oops, its not a URL!",
+				title: "Oops, ini bukan URL yang valid!",
 			});
 		}
 
-		// cek type url
+		// Periksa tipe URL
 		let typeUrl = sleksiUrl(linkUrl.value);
 		if (!typeUrl) {
 			let options = ["Youtube", "Facebook", "Instagram", "Tiktok"];
 			await Swal.fire({
-				title: `Oops, we can't detect type URL you entered.
-						please select your URL type`,
+				title: `Oops, kami tidak dapat mendeteksi jenis URL yang Anda masukkan.
+						Silakan pilih jenis URL Anda`,
 				input: "select",
 				inputOptions: options,
-				inputPlaceholder: "Select a type",
+				inputPlaceholder: "Pilih jenis",
 				showCancelButton: true,
 				inputValidator: (value) => {
-					typeUrl = options[value].toLowerCase();
+					pilihan = options[value].toLowerCase();
+					typeUrl =
+						pilihan === "facebook"
+							? "fb"
+							: pilihan === "instagram"
+							? "ig"
+							: pilihan;
 				},
 			});
 		}
 
-		// lolos
-		// loading
+		// Berhasil
+		// Tampilkan loading
 		process = true;
 		Toast.fire({
 			icon: "info",
-			title: "Please wait, the media is being prepared.",
+			title: "Harap tunggu, media sedang disiapkan.",
 		});
 		resultWrapper.innerHTML = `
         <div
@@ -116,31 +130,45 @@ document
                 alt="" />
         </div>
         `;
+		const timestamp = Math.floor(Date.now() / 1000);
+		const token = CryptoJS.AES.encrypt(
+			`${linkUrl.value}||+||${timestamp}`,
+			privateKey
+		).toString();
 		const resAPI = await axios
 			.post(`/api`, {
 				url: linkUrl.value,
 				type: typeUrl,
+				token,
 			})
 			.catch(async function (e) {
 				return await Toast.fire({
 					icon: "error",
-					title: "Oops, something was wrong!",
+					title: "Oops, terjadi kesalahan!",
 				});
 			});
-		console.log(resAPI);
+
 		const response = resAPI.data;
+		if (response == "Request failed with status code 429") {
+			resultWrapper.innerHTML = "";
+			process = false;
+			return await Toast.fire({
+				icon: "error",
+				title: "Oops, Anda mencapai batas, coba lagi dalam 30 detik!",
+			});
+		}
 		if (!response.status) {
 			resultWrapper.innerHTML = "";
 			process = false;
 			return await Toast.fire({
 				icon: "error",
-				title: "Oops, something was wrong!",
+				title: "Oops, terjadi kesalahan!",
 			});
 		}
 		resultWrapper.innerHTML = response.data;
 		process = false;
 		return Toast.fire({
 			icon: "success",
-			title: "Success, your media is ready to be downloaded",
+			title: "Berhasil, media Anda siap untuk diunduh",
 		});
 	});
