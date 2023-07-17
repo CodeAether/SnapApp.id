@@ -165,7 +165,7 @@
 }
 
 .section-two .headtwo .card {
-	max-width: 700px;
+	max-width: 850px;
 	background-color: var(--abu);
 	margin-bottom: 25px;
 	display: flex;
@@ -182,18 +182,19 @@
 	border-radius: 15px;
 }
 
+
 /* MQ SECTION-TWO */
 /* laptop */
 @media (max-width: 1366px) {
 }
 /* Tablet */
 @media (max-width: 768px) {
-	.section-two .headtwo .card {
+	.section-two .headtwo .row {
 		max-width: 350px;
 	}
-	.section-two .headtwo .card .img {
+	.section-two .headtwo .row .img {
 		min-width: 350px;
-		min-height: 150px;
+		min-height: 50px;
 	}
 	.section-two .headtwo .card h5 {
 		font-size: 15px;
@@ -204,12 +205,12 @@
 }
 /* phone */
 @media (max-width: 450px) {
-	.section-two .headtwo .card {
-		max-width: 250px;
+	.section-two .headtwo .row {
+		max-width: 200px;
 	}
-	.section-two .headtwo .card .img {
-		min-width: 250px;
-		min-height: 150px;
+	.section-two .headtwo .row .img {
+		min-width: 200px;
+		min-height: 50px;
 	}
 	.section-two .headtwo .card h5 {
 		font-size: 15px;
