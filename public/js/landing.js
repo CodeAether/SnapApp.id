@@ -32,25 +32,27 @@ document.addEventListener("scroll", function (event) {
 });
 
 // count effect
+// Function to handle the counting effect
 function startCountingAnimation(data, endValue) {
 	let startValue = 0;
 	data.textContent = 0;
-	let interval = 1000;
-	let duration = Math.floor(interval / endValue);
+	let interval = 16;
+	let increment = Math.ceil(endValue / (2000 / interval));
 	let counter = setInterval(function () {
-		startValue += 1;
-		data.textContent = startValue;
-		if (startValue == endValue) {
+		startValue += increment;
+		if (startValue >= endValue) {
+			startValue = endValue;
 			clearInterval(counter);
 		}
-	}, duration);
+		data.textContent = startValue;
+	}, interval);
 }
 
 // Intersection Observer options
 const observerOptions = {
 	root: null,
 	rootMargin: "0px",
-	threshold: 0.5, // 0.5 means 50% visibility required to trigger the callback
+	threshold: 0.5,
 };
 
 // Create an Intersection Observer instance
@@ -63,7 +65,7 @@ const observer = new IntersectionObserver((entries, observer) => {
 				if (endValue === 0) return (numberData.textContent = 0);
 				startCountingAnimation(numberData, endValue);
 			});
-			observer.unobserve(entry.target); // Stop observing once animations start
+			observer.unobserve(entry.target);
 		}
 	});
 }, observerOptions);
