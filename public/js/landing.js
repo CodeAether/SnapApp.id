@@ -31,28 +31,43 @@ document.addEventListener("scroll", function (event) {
 	}
 });
 
-// section 3
-var $cont = document.querySelector('.cont');
-var $elsArr = [].slice.call(document.querySelectorAll('.el'));
-var $closeBtnArr = [].slice.call(document.querySelectorAll('.el__close-btn'));
+// count effect
+function startCountingAnimation(data, endValue) {
+	let startValue = 0;
+	data.textContent = 0;
+	let interval = 1000;
+	let duration = Math.floor(interval / endValue);
+	let counter = setInterval(function () {
+		startValue += 1;
+		data.textContent = startValue;
+		if (startValue == endValue) {
+			clearInterval(counter);
+		}
+	}, duration);
+}
 
-setTimeout(function() {
-	$cont.classList.remove('s--inactive');
-}, 200);
+// Intersection Observer options
+const observerOptions = {
+	root: null,
+	rootMargin: "0px",
+	threshold: 0.5, // 0.5 means 50% visibility required to trigger the callback
+};
 
-$elsArr.forEach( function($el) {
-	$el.addEventListener('click', function() {
-		if (this.classList.contains('s--active')) 
-		return;
-		$cont.classList.add('s--el-active');
-		this.classList.add('s--active');
+// Create an Intersection Observer instance
+const observer = new IntersectionObserver((entries, observer) => {
+	entries.forEach((entry) => {
+		if (entry.isIntersecting) {
+			const numberDataElements = entry.target.querySelectorAll(".number-data");
+			numberDataElements.forEach((numberData) => {
+				const endValue = parseInt(numberData.getAttribute("number"));
+				if (endValue === 0) return (numberData.textContent = 0);
+				startCountingAnimation(numberData, endValue);
+			});
+			observer.unobserve(entry.target); // Stop observing once animations start
+		}
 	});
-});
+}, observerOptions);
 
-$closeBtnArr.forEach(function($btn) {
-	$btn.addEventListener('click', function(e) {
-		e.stopPropagation();
-		$cont.classList.remove('s--el-active');
-		document.querySelector('.el.s-active').classList.remove('s--active');
-	});
-});
+// Observe the section-two element
+const sectionTwo = document.querySelector(".section-two");
+observer.observe(sectionTwo);

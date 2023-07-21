@@ -1,270 +1,279 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="../css/page/download-page.css" />
-    <!-- Favicon -->
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="../img/icon/apple-touch-icon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="../img/icon/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="../img/icon/favicon-16x16.png"
-    />
-    <link rel="manifest" href="../img/icon/site.webmanifest" />
-    <title>SnapApp - Youtube Downloader</title>
-  </head>
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+			rel="stylesheet" />
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+		<link
+			rel="preconnect"
+			href="https://fonts.googleapis.com" />
+		<link
+			rel="preconnect"
+			href="https://fonts.gstatic.com"
+			crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap"
+			rel="stylesheet" />
+		<link
+			rel="stylesheet"
+			href="../css/page/download-page.css" />
+		<!-- Favicon -->
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="../img/icon/apple-touch-icon.png" />
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="../img/icon/favicon-32x32.png" />
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="16x16"
+			href="../img/icon/favicon-16x16.png" />
+		<link
+			rel="manifest"
+			href="../img/icon/site.webmanifest" />
+		<title>SnapApp - Social Media Downloader</title>
+	</head>
 
-  <body>
-    <!-- Navbar -->
-    <%- include('layout/navbar') %>
+	<body>
+		<!-- Navbar -->
+		<%- include('layout/navbar') %>
 
-    <!-- Main Content -->
-    <div class="content">
-      <section class="section-one">
-        <div class="container">
-          <div class="col">
-            <div class="section-one-content mt-4">
-              <h1 class="section-one-heading">
-                SnapApp - Download Your Files Easily
-              </h1>
-              <p class="section-one-text">
-                SnapApp is a user-friendly tool that allows you to download
-                files from various sources with ease.
-              </p>
-            </div>
-            <div class="section-one-form mt-4">
-              <div class="row">
-                <div class="col-sm-12 inputbg">
-                  <div class="input-group">
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="link_url"
-                      placeholder="Input our URL in here..."
-                    />
-                    <div class="input-group-append">
-                      <button class="btn" type="button" id="pasteBtn">
-                        <i class="bi bi-clipboard"></i>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-12 mt-3 buttonUnduh">
-                  <button
-                    id="downloadButton"
-                    class="btn btn-primary btn-lg"
-                    type="submit"
-                  >
-                    <i class="bi bi-cloud-download-fill"></i> Download
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div id="resultWrapper"></div>
-        </div>
-      </section>
+		<!-- Main Content -->
+		<div class="content">
+			<section class="section-one">
+				<div class="container">
+					<div class="col">
+						<div class="section-one-content mt-4">
+							<h1 class="section-one-heading">
+								SnapApp - Download Your Files Easily
+							</h1>
+							<p class="section-one-text">
+								SnapApp is a user-friendly tool that allows you to download
+								files from various sources with ease.
+							</p>
+						</div>
+						<div class="section-one-form mt-4">
+							<div class="row">
+								<div class="col-sm-12 inputbg">
+									<div class="input-group">
+										<input
+											type="text"
+											class="form-control"
+											id="link_url"
+											placeholder="Input our URL in here..." />
+										<div class="input-group-append">
+											<button
+												class="btn"
+												type="button"
+												id="pasteBtn">
+												<i class="bi bi-clipboard"></i>
+											</button>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-12 mt-3 buttonUnduh">
+									<button
+										id="downloadButton"
+										class="btn btn-primary btn-lg"
+										type="submit">
+										<i class="bi bi-cloud-download-fill"></i> Download
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="resultWrapper"></div>
+				</div>
+			</section>
 
-      <!-- Section two -->
-      <section class="section-two" style="background-color: #3a4f52">
-        <div class="headertext">
-          <h1 class="judulgede">How to Download with SnapApp</h1>
-          <p class="section-two-text">
-            Follow these simple steps to download content videos/foto from any
-            Sosial media using SnapApp:
-          </p>
-        </div>
-        <div class="headtwo" style="width: 100%">
-          <div class="card">
-            <div class="row row g-0">
-              <div class="col-md-4">
-                <img
-                  src="../img/iggambar.jpg"
-                  class="img-fluid rounded-start"
-                  alt="..."
-                />
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title">Copy the URL</h5>
-                  <p class="card-text">
-                    Open the Social Media Aplication or Website. Usually, you
-                    can locate the link by using the "share" feature available
-                    on the posts or content you want to download.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="row row g-0">
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title">Paste the link</h5>
-                  <p class="card-text">
-                    You can download content from anywhere you wish simply by
-                    pasting the link into the input box above. Currently, we
-                    support downloading from 4 social media platforms.
-                  </p>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <img
-                  src="../img/iggambar.jpg"
-                  class="img-fluid rounded-start"
-                  alt="..."
-                />
-              </div>
-            </div>
-            <div class="row row g-0">
-              <div class="col-md-4">
-                <img
-                  src="../img/iggambar.jpg"
-                  class="img-fluid rounded-start"
-                  alt="..."
-                />
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title">Download</h5>
-                  <p class="card-text">
-                    After the process is completed, you can now download the
-                    content and choose your preferred resolution before
-                    downloading it to your device. Before downloading any
-                    content, please read our terms of service.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+			<!-- Section two -->
+			<section
+				class="section-two"
+				style="background-color: #3a4f52">
+				<div class="container">
+					<div class="headertext">
+						<h1 class="judulgede">How to Download with SnapApp</h1>
+						<p class="section-two-text">
+							Follow these simple steps to download content videos/foto from any
+							Sosial media using SnapApp:
+						</p>
+					</div>
+					<div
+						class="headtwo"
+						style="width: 100%">
+						<div class="card">
+							<div class="row row g-0">
+								<div class="col-md-4">
+									<img
+										src="../img/iggambar.jpg"
+										class="img-fluid"
+										alt="..." />
+								</div>
+								<div class="col-md-8">
+									<div class="card-body">
+										<h1 class="card-title">Copy the URL</h1>
+										<p class="card-text">
+											Open the Social Media Aplication or Website. Usually, you
+											can locate the link by using the "share" feature available
+											on the posts or content you want to download.
+										</p>
+									</div>
+								</div>
+							</div>
+							<div class="row row g-0">
+								<div class="col-md-8">
+									<div class="card-body">
+										<h1 class="card-title">Paste the link</h1>
+										<p class="card-text">
+											You can download content from anywhere you wish simply by
+											pasting the link into the input box above. Currently, we
+											support downloading from 4 social media platforms.
+										</p>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<img
+										src="../img/iggambar.jpg"
+										class="img-fluid"
+										alt="..." />
+								</div>
+							</div>
+							<div class="row row g-0">
+								<div class="col-md-4">
+									<img
+										src="../img/iggambar.jpg"
+										class="img-fluid"
+										alt="..." />
+								</div>
+								<div class="col-md-8">
+									<div class="card-body">
+										<h1 class="card-title">Download</h1>
+										<p class="card-text">
+											After the process is completed, you can now download the
+											content and choose your preferred resolution before
+											downloading it to your device. Before downloading any
+											content, please read our terms of service.
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
 
-      <!-- section 3 -->
-      <section class="section-faq" id="faq">
-        <div class="judulgede">
-          <h2>FAQs</h2>
-        </div>
-        <div class="parent">
-          <div class="accordion accordion-flush" id="accordionFlushExample">
-            <div class="accordionchild accordion-item">
-              <h2 class="accordion-header">
-                <button
-                  class="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#flush-collapseOne"
-                  aria-expanded="false"
-                  aria-controls="flush-collapseOne"
-                >
-                  Which social media platforms are supported for downloading on
-                  SnapApp?
-                </button>
-              </h2>
-              <div
-                id="flush-collapseOne"
-                class="accordion-collapse collapse"
-                data-bs-parent="#accordionFlushExample"
-              >
-                <div class="accordion-body">
-                  Currently, we support downloading content from Instagram,
-                  TikTok, Facebook, and YouTube.
-                </div>
-              </div>
-            </div>
-            <div class="accordionchild accordion-item">
-              <h2 class="accordion-header">
-                <button
-                  class="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#flush-collapseTwo"
-                  aria-expanded="false"
-                  aria-controls="flush-collapseTwo"
-                >
-                  How to download content from YouTube?
-                </button>
-              </h2>
-              <div
-                id="flush-collapseTwo"
-                class="accordion-collapse collapse"
-                data-bs-parent="#accordionFlushExample"
-              >
-                <div class="accordion-body">
-                  You can find the download button in the three-dot menu at the
-                  corner of the video.<
-                </div>
-              </div>
-            </div>
-            <div class="accordionchild accordion-item">
-              <h2 class="accordion-header">
-                <button
-                  class="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#flush-collapseThree"
-                  aria-expanded="false"
-                  aria-controls="flush-collapseThree"
-                >
-                  Are there any restrictions?
-                </button>
-              </h2>
-              <div
-                id="flush-collapseThree"
-                class="accordion-collapse collapse"
-                data-bs-parent="#accordionFlushExample"
-              >
-                <div class="accordion-body">
-                  Only your imagination, there are no limits to downloading.
-                  Move forward!
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
+			<!-- section 3 -->
+			<section
+				class="section-faq"
+				id="faq">
+				<div class="container">
+					<div class="judulgede">
+						<h2>FAQs</h2>
+					</div>
+					<div class="section">
+						<div class="parent">
+							<div
+								class="accordion accordion-flush"
+								id="accordionFlushExample">
+								<div class="accordionchild accordion-item">
+									<h2 class="accordion-header">
+										<button
+											class="accordion-button collapsed"
+											type="button"
+											data-bs-toggle="collapse"
+											data-bs-target="#flush-collapseOne"
+											aria-expanded="false"
+											aria-controls="flush-collapseOne">
+											Which social media platforms are supported for downloading
+											on SnapApp?
+										</button>
+									</h2>
+									<div
+										id="flush-collapseOne"
+										class="accordion-collapse collapse"
+										data-bs-parent="#accordionFlushExample">
+										<div class="accordion-body">
+											Currently, we support downloading content from Instagram,
+											TikTok, Facebook, and YouTube.
+										</div>
+									</div>
+								</div>
+								<div class="accordionchild accordion-item">
+									<h2 class="accordion-header">
+										<button
+											class="accordion-button collapsed"
+											type="button"
+											data-bs-toggle="collapse"
+											data-bs-target="#flush-collapseTwo"
+											aria-expanded="false"
+											aria-controls="flush-collapseTwo">
+											How to download content from YouTube?
+										</button>
+									</h2>
+									<div
+										id="flush-collapseTwo"
+										class="accordion-collapse collapse"
+										data-bs-parent="#accordionFlushExample">
+										<div class="accordion-body">
+											You can find the download button in the three-dot menu at
+											the corner of the video.
+										</div>
+									</div>
+								</div>
+								<div class="accordionchild accordion-item">
+									<h2 class="accordion-header">
+										<button
+											class="accordion-button collapsed"
+											type="button"
+											data-bs-toggle="collapse"
+											data-bs-target="#flush-collapseThree"
+											aria-expanded="false"
+											aria-controls="flush-collapseThree">
+											Are there any restrictions?
+										</button>
+									</h2>
+									<div
+										id="flush-collapseThree"
+										class="accordion-collapse collapse"
+										data-bs-parent="#accordionFlushExample">
+										<div class="accordion-body">
+											Only your imagination, there are no limits to downloading.
+											Move forward!
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
 
-    <!-- Footer -->
-    <%- include('layout/footer') %>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"
-      integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-      crossorigin="anonymous"
-    ></script>
-    <script src="../js/download-page-en.js"></script>
-  </body>
+		<!-- Footer -->
+		<%- include('layout/footer') %>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"
+			integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"></script>
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+			crossorigin="anonymous"></script>
+		<script src="../js/download-page-en.js"></script>
+	</body>
 </html>

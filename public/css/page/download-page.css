@@ -5,6 +5,10 @@
 	--putih: #eff3f3;
 }
 
+body {
+	background-color: var(--abu);
+}
+
 /* Navbar CSS */
 .navbar {
 	background-color: var(
@@ -165,59 +169,25 @@
 }
 
 .section-two .headtwo .card {
-	max-width: 850px;
 	background-color: var(--abu);
 	margin-bottom: 25px;
 	display: flex;
 }
+.section-two .headtwo .card img {
+	width: 100%;
+	height: 100%;
+	border-radius: 15px;
+}
 
-.section-two .headtwo .card h5 {
+.section-two .headtwo .card h1 {
 	font-weight: bold;
 }
 
 .section-two .headtwo .row {
 	background-color: white;
-	margin-bottom: 20px;
+	margin-bottom: 3rem;
 	align-items: center;
 	border-radius: 15px;
-}
-
-
-/* MQ SECTION-TWO */
-/* laptop */
-@media (max-width: 1366px) {
-}
-/* Tablet */
-@media (max-width: 768px) {
-	.section-two .headtwo .row {
-		max-width: 350px;
-	}
-	.section-two .headtwo .row .img {
-		min-width: 350px;
-		min-height: 50px;
-	}
-	.section-two .headtwo .card h5 {
-		font-size: 15px;
-	}
-	.section-two .headtwo .card p {
-		font-size: 10px;
-	}
-}
-/* phone */
-@media (max-width: 450px) {
-	.section-two .headtwo .row {
-		max-width: 200px;
-	}
-	.section-two .headtwo .row .img {
-		min-width: 200px;
-		min-height: 50px;
-	}
-	.section-two .headtwo .card h5 {
-		font-size: 15px;
-	}
-	.section-two .headtwo .card p {
-		font-size: 10px;
-	}
 }
 
 /* FAQ SECTION */
