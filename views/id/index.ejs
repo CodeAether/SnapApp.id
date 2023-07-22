@@ -32,10 +32,10 @@
 			content="SnapApp, sebuah situs pengunduh media yang mudah digunakan. Unduh foto dan video yang menarik dari Facebook, Instagram, Tiktok, dan Youtube dengan cepat dan mudah." />
 		<meta
 			property="og:image"
-			content="img/snapapp-banner.png" />
+			content="https://<%= req.hostname %>/img/snapapp-banner.png" />
 		<meta
 			property="og:url"
-			content="https://snapapp.my.id/" />
+			content="https://<%= req.hostname %>/" />
 		<meta
 			property="og:site_name"
 			content="SnapApp" />
@@ -56,17 +56,17 @@
 			content="SnapApp, sebuah situs pengunduh media yang mudah digunakan. Unduh foto dan video yang menarik dari Facebook, Instagram, Tiktok, dan Youtube dengan cepat dan mudah." />
 		<meta
 			name="twitter:image"
-			content="img/snapapp-banner.png" />
+			content="<%= req.hostname %>img/snapapp-banner.png" />
 
 		<!-- lang -->
 		<link
 			rel="alternate"
 			hreflang="id"
-			href="https://snapapp.my.id/id/" />
+			href="https://<%= req.hostname %>/id/" />
 		<link
 			rel="alternate"
 			hreflang="en"
-			href="https://snapapp.my.id/en/" />
+			href="https://<%= req.hostname %>/en/" />
 		<!-- css -->
 		<link
 			rel="stylesheet"
@@ -131,7 +131,7 @@
 		<link
 			rel="manifest"
 			href="img/icon/site.webmanifest" />
-		<title>Snap App</title>
+		<title>SnapApp - Social Media Downloader</title>
 	</head>
 	<body>
 		<!-- Nav Start -->
