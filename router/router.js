@@ -35,14 +35,14 @@ app.get("/download/", async (req, res) => {
 });
 app.get("/download/id", async (req, res) => {
 	try {
-		res.render("id/page/download-page");
+		res.render("id/page/download-page", { req });
 	} catch (e) {
 		res.status(200).json([e.message]);
 	}
 });
 app.get("/download/en", async (req, res) => {
 	try {
-		res.render("en/page/download-page");
+		res.render("en/page/download-page", { req });
 	} catch (e) {
 		res.status(200).json([e.message]);
 	}
