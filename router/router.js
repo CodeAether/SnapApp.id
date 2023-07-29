@@ -19,11 +19,11 @@ app.get("/en", async (req, res) => {
 });
 
 app.get("/tos", (req, res) => {
-	res.render("en/page/tos");
+	res.render("other/tos");
 });
 
 app.get("/privacypolicy", (req, res) => {
-	res.render("en/page/privacypolicy");
+	res.render("other/privacypolicy");
 });
 
 app.get("/download/", async (req, res) => {
