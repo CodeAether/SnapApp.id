@@ -56,6 +56,7 @@ app.post("/api", async (req, res) => {
 	try {
 		token = req.body.token;
 		type = req.body.type;
+		downloadType = req.body.downloadType;
 		url = req.body.url;
 		const bytes = CryptoJS.AES.decrypt(token, privateKey);
 		const unencryptToken = bytes.toString(CryptoJS.enc.Utf8);
@@ -68,6 +69,7 @@ app.post("/api", async (req, res) => {
 		const data = await axios.post(`http://localhost:3000/api`, {
 			url,
 			type,
+			downloadType,
 			token,
 		});
 		res.json(data.data);
